@@ -121,14 +121,13 @@ shadow_mesh = SubResource("ArrayMesh_1pudy")
 collision_layer = 4
 continuous_cd = true
 script = ExtResource("1_r6k78")
-object = "browning"
+objectName = "browning"
 currentAmmo = 2
 magazineSize = 2
 extraAmmo = 8
-pellets = 12
-shotgun = true
-gunRecoil = 20.0
-cameraRecoil = 1
+pelletCount = 6
+isShotgun = true
+gunRecoilAmount = 2.0
 reloadTime = 80
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

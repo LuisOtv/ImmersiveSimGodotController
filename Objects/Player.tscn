@@ -1,15 +1,20 @@
-[gd_scene load_steps=72 format=4 uid="uid://cpmokfsmky3pa"]
+[gd_scene load_steps=77 format=4 uid="uid://cpmokfsmky3pa"]
 
 [ext_resource type="Script" uid="uid://cx48b6dj2foil" path="res://Scripts/Player.gd" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://bjjc8yj3d6gsl" path="res://Scripts/RayCast.gd" id="2_kpjcp"]
 [ext_resource type="Script" uid="uid://brwo24hi0sf8n" path="res://Scripts/ItemsManager.gd" id="3_utwlt"]
 [ext_resource type="Texture2D" uid="uid://82shrqyhb20n" path="res://Textures/OuterCrossHair.png" id="4_m0x7a"]
+[ext_resource type="PackedScene" uid="uid://b0uafo3b7p4xc" path="res://Objects/Guns/P250.tscn" id="5_g1u4f"]
 [ext_resource type="Script" uid="uid://div2ud3ri27jm" path="res://Scripts/Gun.gd" id="5_tdg3f"]
 [ext_resource type="AudioStream" uid="uid://ckve2c3fm6wjj" path="res://Sounds/Fire.mp3" id="7_dtqjt"]
+[ext_resource type="PackedScene" uid="uid://dyxlkyac63exi" path="res://Objects/Guns/M24.tscn" id="7_kwjl5"]
 [ext_resource type="AudioStream" uid="uid://yotay3wyqhbi" path="res://Sounds/Equip.mp3" id="8_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://c2vpyaxqwf0sx" path="res://Objects/Guns/Bullet.tscn" id="8_g1u4f"]
 [ext_resource type="Texture2D" uid="uid://dy2rswibwt0wn" path="res://Textures/MuzzleFlashFace.png" id="8_miouo"]
 [ext_resource type="Texture2D" uid="uid://bia4vt117g8dp" path="res://Textures/MuzzleFlash.png" id="8_o3h8g"]
+[ext_resource type="PackedScene" uid="uid://bsc7ltilnibed" path="res://Objects/Guns/M4.tscn" id="9_vy1ne"]
 [ext_resource type="AudioStream" uid="uid://d150gf0sskr1s" path="res://Sounds/Empty.mp3" id="11_glx4g"]
+[ext_resource type="PackedScene" uid="uid://exf3lb8t6d4x" path="res://Objects/Guns/Browning.tscn" id="11_qsaej"]
 [ext_resource type="FontFile" uid="uid://b6qiykyx8khet" path="res://Fonts/IBMPlexMono-Medium.ttf" id="16_m0x7a"]
 [ext_resource type="Script" uid="uid://kaqby0tjxafy" path="res://Scripts/CrossHair.gd" id="17_8flut"]
 [ext_resource type="AudioStream" uid="uid://cdj0jmxig00d7" path="res://Sounds/Reloading.mp3" id="19_m0x7a"]
@@ -685,9 +690,15 @@ crosshairNode = NodePath("../../CrossHair")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.312124, -0.324938, -0.434046)
 script = ExtResource("3_utwlt")
 
-[node name="P250" type="Node3D" parent="Neck/Camera3D/ItemsManager"]
+[node name="P250" type="Node3D" parent="Neck/Camera3D/ItemsManager" node_paths=PackedStringArray("fireSoundPlayer", "reloadSoundPlayer", "emptySoundPlayer")]
 visible = false
 script = ExtResource("5_tdg3f")
+objectName = "p250"
+gunDropPrefab = ExtResource("5_g1u4f")
+bulletPrefab = ExtResource("8_g1u4f")
+fireSoundPlayer = NodePath("../../../../Sounds/Fire")
+reloadSoundPlayer = NodePath("../../../../Sounds/MagazineReload")
+emptySoundPlayer = NodePath("../../../../Sounds/Empty")
 
 [node name="Gun" type="MultiMeshInstance3D" parent="Neck/Camera3D/ItemsManager/P250"]
 
@@ -720,9 +731,14 @@ transform = Transform3D(0.403465, 0, 0, 0, 0.403465, 0, 0, 0, 0.403465, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bfbt0")
 skeleton = NodePath("")
 
-[node name="M4" type="Node3D" parent="Neck/Camera3D/ItemsManager"]
+[node name="M4" type="Node3D" parent="Neck/Camera3D/ItemsManager" node_paths=PackedStringArray("fireSoundPlayer", "reloadSoundPlayer", "emptySoundPlayer")]
 visible = false
 script = ExtResource("5_tdg3f")
+gunDropPrefab = ExtResource("9_vy1ne")
+bulletPrefab = ExtResource("8_g1u4f")
+fireSoundPlayer = NodePath("../../../../Sounds/Fire")
+reloadSoundPlayer = NodePath("../../../../Sounds/MagazineReload")
+emptySoundPlayer = NodePath("../../../../Sounds/Empty")
 
 [node name="Gun" type="MultiMeshInstance3D" parent="Neck/Camera3D/ItemsManager/M4"]
 
@@ -755,9 +771,15 @@ transform = Transform3D(0.403465, 0, 0, 0, 0.403465, 0, 0, 0, 0.403465, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bfbt0")
 skeleton = NodePath("")
 
-[node name="M24" type="Node3D" parent="Neck/Camera3D/ItemsManager"]
+[node name="M24" type="Node3D" parent="Neck/Camera3D/ItemsManager" node_paths=PackedStringArray("fireSoundPlayer", "reloadSoundPlayer", "emptySoundPlayer")]
 visible = false
 script = ExtResource("5_tdg3f")
+objectName = "m24"
+gunDropPrefab = ExtResource("7_kwjl5")
+bulletPrefab = ExtResource("8_g1u4f")
+fireSoundPlayer = NodePath("../../../../Sounds/Fire")
+reloadSoundPlayer = NodePath("../../../../Sounds/MagazineReload")
+emptySoundPlayer = NodePath("../../../../Sounds/Empty")
 
 [node name="Gun" type="MultiMeshInstance3D" parent="Neck/Camera3D/ItemsManager/M24"]
 multimesh = SubResource("MultiMesh_utwlt")
@@ -806,9 +828,15 @@ transform = Transform3D(0.403465, 0, 0, 0, 0.403465, 0, 0, 0, 0.403465, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bfbt0")
 skeleton = NodePath("")
 
-[node name="Browning" type="Node3D" parent="Neck/Camera3D/ItemsManager"]
+[node name="Browning" type="Node3D" parent="Neck/Camera3D/ItemsManager" node_paths=PackedStringArray("fireSoundPlayer", "reloadSoundPlayer", "emptySoundPlayer")]
 visible = false
 script = ExtResource("5_tdg3f")
+objectName = "browning"
+gunDropPrefab = ExtResource("11_qsaej")
+bulletPrefab = ExtResource("8_g1u4f")
+fireSoundPlayer = NodePath("../../../../Sounds/Fire")
+reloadSoundPlayer = NodePath("../../../../Sounds/ShotgunReload")
+emptySoundPlayer = NodePath("../../../../Sounds/Empty")
 
 [node name="Gun" type="MultiMeshInstance3D" parent="Neck/Camera3D/ItemsManager/Browning"]
 

@@ -111,6 +111,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
 [node name="LockedDoor" parent="Door" instance=ExtResource("9_h5ktn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 0)
 
+[node name="StaticBody3D" parent="Door/LockedDoor" index="0"]
+isLocked = true
+requiredKey = "Door Key"
+
 [node name="NPCs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
@@ -136,6 +140,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
 
 [node name="Elevator" parent="Movement" instance=ExtResource("15_2nd5r")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.00416, -0.5, -0.98045)
+numberOfButtons = 1
+floorDistance = 4.0
 
 [node name="Ladder" parent="Movement" instance=ExtResource("18_0mp4x")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.210141, 0, 1.5)

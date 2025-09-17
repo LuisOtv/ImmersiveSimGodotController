@@ -63,12 +63,11 @@ blend_shape_mode = 0
 collision_layer = 4
 continuous_cd = true
 script = ExtResource("1_3xp2k")
-object = "p250"
+objectName = "p250"
 currentAmmo = 7
 magazineSize = 7
 extraAmmo = 35
-gunRecoil = 20.0
-cameraRecoil = 1
+gunRecoilAmount = 8.0
 reloadTime = 80
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

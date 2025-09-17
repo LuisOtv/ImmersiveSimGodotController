@@ -8,10 +8,10 @@ extends Node3D
 
 # Weapon references
 @export_category("Weapons")
-@onready var pistol: Node3D = $P250
-@onready var rifle: Node3D = $M4
-@onready var sniperRifle: Node3D = $M24
-@onready var machineGun: Node3D = $Browning
+@onready var p250: Node3D = $P250
+@onready var m4: Node3D = $M4
+@onready var m24: Node3D = $M24
+@onready var browning: Node3D = $Browning
 
 # State variables
 var isHoldingGun: bool

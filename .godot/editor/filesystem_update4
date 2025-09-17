@@ -1,2 +1,9 @@
-res://Scenes/TestMap.tscn
 res://Objects/Player.tscn
+res://Scenes/TestMap.tscn
+res://Objects/Map/Door.tscn
+res://Objects/Guns/P250.tscn
+res://Objects/Guns/Browning.tscn
+res://Objects/Guns/M4.tscn
+res://Objects/Guns/M24.tscn
+res://Scripts/ItemsManager.gd
+res://Scripts/Gun.gd

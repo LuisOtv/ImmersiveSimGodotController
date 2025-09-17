@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dcmjc1ntdvxyy" path="res://Scripts/Door.gd" id="1_dwvts"]
 [ext_resource type="Texture2D" uid="uid://co3awki83vyi2" path="res://Textures/Colors/Orange.png" id="2_vrujk"]
-[ext_resource type="AudioStream" uid="uid://c8ym8q21ph8vt" path="res://Sounds/OpenDoor.mp3" id="3_vrujk"]
-[ext_resource type="AudioStream" uid="uid://h05wmqvt4cog" path="res://Sounds/UnlockDoor.mp3" id="4_s8kc8"]
+[ext_resource type="AudioStream" uid="uid://clqrws5unhnuh" path="res://Sounds/OpenDoor.mp3" id="3_vrujk"]
+[ext_resource type="AudioStream" uid="uid://c7usf0svifnme" path="res://Sounds/UnlockDoor.mp3" id="4_s8kc8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vrujk"]
 size = Vector3(1, 2, 0.1)
@@ -72,11 +72,11 @@ _data = {
 
 [node name="Door" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." node_paths=PackedStringArray("AnimPlayer") groups=["Interactable", "Object"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="." node_paths=PackedStringArray("animationPlayer") groups=["Interactable", "Object"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 5
 script = ExtResource("1_dwvts")
-AnimPlayer = NodePath("../AnimationPlayer")
+animationPlayer = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)

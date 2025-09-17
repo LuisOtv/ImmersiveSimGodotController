@@ -85,14 +85,13 @@ shadow_mesh = SubResource("ArrayMesh_f86ph")
 collision_layer = 4
 continuous_cd = true
 script = ExtResource("1_qsad0")
-object = "m4"
+objectName = "m4"
 currentAmmo = 24
 magazineSize = 24
 extraAmmo = 48
-automatic = true
-bpm = 5.0
-gunRecoil = 10.0
-cameraRecoil = 1
+isAutomatic = true
+burstPerMinute = 10.0
+gunRecoilAmount = 5.0
 reloadTime = 120
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

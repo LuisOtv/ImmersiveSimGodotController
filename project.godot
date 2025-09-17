@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="imersive"
+config/name="Immersive Controller"
+config/version="1.0"
 run/main_scene="uid://cshvmp6a3xbcu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

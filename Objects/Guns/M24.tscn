@@ -188,14 +188,12 @@ size = Vector3(0.670288, 0.214626, 0.0693359)
 [node name="M24" type="RigidBody3D" groups=["Interactable", "Object"]]
 collision_layer = 4
 script = ExtResource("1_4fn4r")
-object = "m24"
+objectName = "m24"
 currentAmmo = 3
 magazineSize = 3
 extraAmmo = 12
-gunRecoil = 20.0
-cameraRecoil = 5
+gunRecoilAmount = 6.0
 reloadTime = 180
-scopeFov = 20
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.10574e-09, 0, 0.0723965, 0, 0.0673833, 0, -0.0755537, 0, -7.76705e-09, 0, 0.00447206, -0.15816)

@@ -65,7 +65,7 @@ func _process(_deltaTime: float) -> void:
 		weaponsContainer.global_transform.origin = lerp(weaponsContainer.global_transform.origin, lowerPosition.global_transform.origin, 0.1)
 		currentReloadTime -= 1
 	# Handle object holding (lower weapon)
-	elif weaponsContainer.holdingObject:
+	elif weaponsContainer.isHoldingObject:
 		weaponsContainer.global_transform.origin = lerp(weaponsContainer.global_transform.origin, lowerPosition.global_transform.origin, 0.1)
 		return
 	# Normal weapon handling
