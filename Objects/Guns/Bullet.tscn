@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=3 uid="uid://c2vpyaxqwf0sx"]
+
+[ext_resource type="Script" uid="uid://qdyhdkmqb206" path="res://Scripts/Bullet.gd" id="1_7ofh1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iedbo"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.988235, 0.764706, 0.345098, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_e2v1p"]
+material = SubResource("StandardMaterial3D_iedbo")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxek4"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.988235, 0.764706, 0.345098, 0.352941)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uyi77"]
+material = SubResource("StandardMaterial3D_wxek4")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j6uf"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.988235, 0, 0, 0.486275)
+refraction_scale = -0.57
+grow_amount = -1.164
+
+[sub_resource type="SphereMesh" id="SphereMesh_xsayh"]
+material = SubResource("StandardMaterial3D_4j6uf")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e2v1p"]
+radius = 0.0482014
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7ofh1"]
+radius = 0.0482014
+
+[sub_resource type="Curve" id="Curve_8c5lk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.229836), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7ofh1"]
+curve = SubResource("Curve_8c5lk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wxek4"]
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_curve = SubResource("CurveTexture_7ofh1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajf2u"]
+albedo_color = Color(0.994367, 0.716054, 0.657055, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ajf2u"]
+material = SubResource("StandardMaterial3D_ajf2u")
+radius = 0.02
+height = 0.04
+
+[node name="Node3D" type="RigidBody3D"]
+collision_layer = 16
+collision_mask = 2
+continuous_cd = true
+script = ExtResource("1_7ofh1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 0, 0)
+layers = 2
+mesh = SubResource("SphereMesh_e2v1p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0, 0)
+layers = 2
+mesh = SubResource("SphereMesh_uyi77")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 0, 0, 0)
+layers = 2
+mesh = SubResource("SphereMesh_xsayh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.01057, 0, 0, 0, 1.01057, 0, 0, 0, 1.01057, 0, 0, 0)
+shape = SubResource("SphereShape3D_e2v1p")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.01057, 0, 0, 0, 1.01057, 0, 0, 0, 1.01057, 0, 0, 0)
+shape = SubResource("SphereShape3D_7ofh1")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 2
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_wxek4")
+draw_pass_1 = SubResource("SphereMesh_ajf2u")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

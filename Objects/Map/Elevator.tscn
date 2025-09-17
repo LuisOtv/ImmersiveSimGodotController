@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj41y8mgn600q"]
+
+[ext_resource type="Script" uid="uid://btm7nkqxnbga0" path="res://Scripts/Elevator.gd" id="1_1206r"]
+[ext_resource type="PackedScene" uid="uid://cx6h0t4n7kuo6" path="res://Objects/Map/ElevatorButton.tscn" id="2_1206r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_thsiv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thsiv"]
+size = Vector3(3, 0.04, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1206r"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8r757"]
+material = SubResource("StandardMaterial3D_1206r")
+
+[node name="Elevator" type="StaticBody3D"]
+script = ExtResource("1_1206r")
+buttonInstance = ExtResource("2_1206r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 0.04, 0, 0, 0, 3, 0, -0.02, 0)
+mesh = SubResource("BoxMesh_thsiv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+shape = SubResource("BoxShape3D_thsiv")
+
+[node name="ButtonPos" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 1.7, -1)
+
+[node name="Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, -1.45)
+mesh = SubResource("BoxMesh_8r757")
+
+[node name="Floors" type="Node3D" parent="."]

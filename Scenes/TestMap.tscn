@@ -1,0 +1,167 @@
+[gd_scene load_steps=24 format=3 uid="uid://cshvmp6a3xbcu"]
+
+[ext_resource type="PackedScene" uid="uid://cpmokfsmky3pa" path="res://Objects/Player.tscn" id="1_151je"]
+[ext_resource type="PackedScene" uid="uid://xt21uw7ybdsj" path="res://Objects/Map/Box.tscn" id="2_hfbqk"]
+[ext_resource type="Texture2D" uid="uid://cky3lhaa6nprp" path="res://Textures/Colors/Red.png" id="3_0mp4x"]
+[ext_resource type="PackedScene" uid="uid://bsc7ltilnibed" path="res://Objects/Guns/M4.tscn" id="4_l2dxr"]
+[ext_resource type="PackedScene" uid="uid://b0uafo3b7p4xc" path="res://Objects/Guns/P250.tscn" id="5_040lc"]
+[ext_resource type="PackedScene" uid="uid://dyxlkyac63exi" path="res://Objects/Guns/M24.tscn" id="6_w8t4k"]
+[ext_resource type="PackedScene" uid="uid://exf3lb8t6d4x" path="res://Objects/Guns/Browning.tscn" id="7_n1xgc"]
+[ext_resource type="Texture2D" uid="uid://c1k8qn626mhdx" path="res://Textures/Colors/Green.png" id="8_6gndh"]
+[ext_resource type="PackedScene" uid="uid://tqbxlkgu2ylf" path="res://Objects/Map/Door.tscn" id="9_h5ktn"]
+[ext_resource type="PackedScene" uid="uid://dgrimtsurb2vo" path="res://Objects/Items/key.tscn" id="10_hnl4h"]
+[ext_resource type="Texture2D" uid="uid://co3awki83vyi2" path="res://Textures/Colors/Orange.png" id="11_6l6jm"]
+[ext_resource type="PackedScene" uid="uid://bi4pe0wm4a0rq" path="res://Objects/NPC.tscn" id="12_6eg4l"]
+[ext_resource type="PackedScene" uid="uid://3682hmwkoi58" path="res://Objects/Map/Window.tscn" id="13_vq8a5"]
+[ext_resource type="PackedScene" uid="uid://bj41y8mgn600q" path="res://Objects/Map/Elevator.tscn" id="15_2nd5r"]
+[ext_resource type="PackedScene" uid="uid://f87akad1r57o" path="res://Objects/Map/Ladder.tscn" id="18_0mp4x"]
+[ext_resource type="Texture2D" uid="uid://buijhku0ycevf" path="res://Textures/Colors/Black.png" id="20_l2dxr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7urbq"]
+albedo_color = Color(0.285257, 0.377184, 0.408288, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5ricj"]
+material = SubResource("StandardMaterial3D_7urbq")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y2uhi"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vts2g"]
+albedo_texture = ExtResource("3_0mp4x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8elp"]
+albedo_texture = ExtResource("8_6gndh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lpmd"]
+albedo_texture = ExtResource("11_6l6jm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_040lc"]
+albedo_texture = ExtResource("20_l2dxr")
+uv1_triplanar = true
+
+[node name="TestMap" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499641, 0)
+mesh = SubResource("PlaneMesh_5ricj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_y2uhi")
+
+[node name="Player" parent="." instance=ExtResource("1_151je")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Guns" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Guns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
+size = Vector3(6, 1, 6)
+material = SubResource("StandardMaterial3D_vts2g")
+
+[node name="M4" parent="Guns" instance=ExtResource("4_l2dxr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.603873, -0.294105, -2.00994)
+currentAmmo = 30
+magazineSize = 30
+extraAmmo = 240
+
+[node name="P250" parent="Guns" instance=ExtResource("5_040lc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.49071, -0.327973, -2.0167)
+currentAmmo = 12
+magazineSize = 12
+extraAmmo = 36
+
+[node name="M24" parent="Guns" instance=ExtResource("6_w8t4k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.01019, -0.279541, -2)
+currentAmmo = 5
+magazineSize = 5
+extraAmmo = 20
+
+[node name="Browning" parent="Guns" instance=ExtResource("7_n1xgc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.20275, -0.251112, -2)
+extraAmmo = 12
+
+[node name="Door" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
+size = Vector3(6, 1, 6)
+material = SubResource("StandardMaterial3D_u8elp")
+
+[node name="Key" parent="Door" instance=ExtResource("10_hnl4h")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.777765, 0.601985, -1)
+collision_layer = 5
+collision_mask = 1
+
+[node name="Door" parent="Door" instance=ExtResource("9_h5ktn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
+
+[node name="LockedDoor" parent="Door" instance=ExtResource("9_h5ktn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 0)
+
+[node name="NPCs" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NPCs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
+size = Vector3(6, 1, 6)
+material = SubResource("StandardMaterial3D_5lpmd")
+
+[node name="NPC" parent="NPCs" instance=ExtResource("12_6eg4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05338, 0.5, 1.58368)
+
+[node name="NPC2" parent="NPCs" instance=ExtResource("12_6eg4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94662, 0.5, 1.58368)
+
+[node name="Window" parent="NPCs" instance=ExtResource("13_vq8a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05218, 0.5, -2.79882)
+
+[node name="Window2" parent="NPCs" instance=ExtResource("13_vq8a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94782, 0.5, -2.79882)
+
+[node name="Movement" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+
+[node name="Elevator" parent="Movement" instance=ExtResource("15_2nd5r")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.00416, -0.5, -0.98045)
+
+[node name="Ladder" parent="Movement" instance=ExtResource("18_0mp4x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.210141, 0, 1.5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Movement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.55, 1.25)
+use_collision = true
+size = Vector3(1, 4, 8.5)
+material = SubResource("StandardMaterial3D_040lc")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Movement"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.900001, 2.1, 7.6)
+use_collision = true
+size = Vector3(4.2, 2.9, 1)
+material = SubResource("StandardMaterial3D_040lc")
+
+[node name="Box" parent="Movement" instance=ExtResource("2_hfbqk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.01348, 0.131948, 6.96571)
+
+[node name="Box2" parent="Movement" instance=ExtResource("2_hfbqk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.01348, 0.131948, 5.66571)
+
+[node name="Box3" parent="Movement" instance=ExtResource("2_hfbqk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.01348, 0.131948, 4.46571)
+
+[node name="Box4" parent="Movement" instance=ExtResource("2_hfbqk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.01348, 0.131948, 3.16571)
+
+[editable path="Door/LockedDoor"]

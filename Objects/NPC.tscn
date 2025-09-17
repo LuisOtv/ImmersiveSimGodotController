@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi4pe0wm4a0rq"]
+
+[ext_resource type="Script" uid="uid://b5h8s86781tks" path="res://Scripts/NPC.gd" id="1_tdvfm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy2ll"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tdvfm"]
+material = SubResource("StandardMaterial3D_oy2ll")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fo5tq"]
+
+[node name="NPC" type="StaticBody3D" groups=["Interactable", "NPC", "Object"]]
+collision_layer = 5
+script = ExtResource("1_tdvfm")
+speech = Array[String](["Alo Textando"])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_tdvfm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fo5tq")

@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://f87akad1r57o"]
+
+[ext_resource type="Script" uid="uid://dxdnto4mecdjh" path="res://Scripts/Ladder.gd" id="1_ni16l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfbqk"]
+transparency = 1
+albedo_color = Color(1, 0.329412, 0, 0.537255)
+
+[sub_resource type="BoxMesh" id="BoxMesh_151je"]
+material = SubResource("StandardMaterial3D_hfbqk")
+size = Vector3(0.6, 1, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_151je"]
+size = Vector3(0.6, 1, 0.05)
+
+[node name="Stairs" type="StaticBody3D" groups=["Interactable", "Object"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 4
+script = ExtResource("1_ni16l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 5.7, 0, 0, 0, 1, 0, 0.9, -0.0999994)
+mesh = SubResource("BoxMesh_151je")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 5.7, 0, 0, 0, 1, 0, 0.9, -0.0999994)
+shape = SubResource("BoxShape3D_151je")
+
+[node name="Bottom" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74228e-09, 0.8, 0.5)
+
+[node name="BottomDrop" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74228e-09, 0.7, 0.5)
+
+[node name="Top" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37114e-09, 4.6, 0.4)
+
+[node name="TopDrop" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37114e-09, 4.7, 0.4)
+
+[node name="Move" type="Timer" parent="."]
+wait_time = 0.5

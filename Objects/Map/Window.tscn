@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://3682hmwkoi58"]
+
+[ext_resource type="Script" uid="uid://cwv1en0eqlgo" path="res://Scripts/BreakableGlass.gd" id="1_kyrvx"]
+[ext_resource type="AudioStream" uid="uid://cjipaljh0jl3a" path="res://Sounds/GlassBreak.mp3" id="2_8xi0y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ip4lk"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.12549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ip4lk"]
+material = SubResource("StandardMaterial3D_ip4lk")
+size = Vector3(2, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kyrvx"]
+size = Vector3(2, 2, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8xi0y"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 0)
+direction = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnfhm"]
+transparency = 1
+albedo_color = Color(0.372549, 0.372549, 0.603922, 0.203922)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lo7n1"]
+material = SubResource("StandardMaterial3D_wnfhm")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Window" type="StaticBody3D" groups=["Breakable"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_kyrvx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ip4lk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kyrvx")
+
+[node name="Break" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_8xi0y")
+volume_db = -8.0
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_kyrvx")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 24
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_8xi0y")
+draw_pass_1 = SubResource("BoxMesh_lo7n1")
