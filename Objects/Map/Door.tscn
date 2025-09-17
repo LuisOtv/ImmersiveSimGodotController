@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://tqbxlkgu2ylf"]
 
 [ext_resource type="Script" uid="uid://dcmjc1ntdvxyy" path="res://Scripts/Door.gd" id="1_dwvts"]
-[ext_resource type="Texture2D" uid="uid://co3awki83vyi2" path="res://Textures/Colors/Orange.png" id="2_vrujk"]
-[ext_resource type="AudioStream" uid="uid://clqrws5unhnuh" path="res://Sounds/OpenDoor.mp3" id="3_vrujk"]
-[ext_resource type="AudioStream" uid="uid://c7usf0svifnme" path="res://Sounds/UnlockDoor.mp3" id="4_s8kc8"]
+[ext_resource type="Texture2D" uid="uid://b72insd5mvg4i" path="res://Textures/Colors/Orange.png" id="2_vrujk"]
+[ext_resource type="AudioStream" uid="uid://bvjkr2vhl4v5b" path="res://Sounds/OpenDoor.mp3" id="3_vrujk"]
+[ext_resource type="AudioStream" uid="uid://bt50n4qa6xupu" path="res://Sounds/UnlockDoor.mp3" id="4_s8kc8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vrujk"]
 size = Vector3(1, 2, 0.1)
