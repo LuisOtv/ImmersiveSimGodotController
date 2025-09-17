@@ -1,36 +1,50 @@
 # 🎮 FPS Stealth Prototype (Godot)
 
-A **first-person stealth shooter prototype** made with **Godot Engine** 4.4, combining **action, stealth, and interactive environments**.  
-Players can tackle situations with different approaches — through direct combat or sneaky stealth.
+A **first-person stealth shooter prototype** built with **Godot Engine
+4.4**, blending **action, stealth, and interactive environments**.\
+Players can approach scenarios in multiple ways --- either through
+intense combat or careful stealth.
 
----
+------------------------------------------------------------------------
 
 ## 🚀 Features
 
 ### 🔫 Weapons
-- **Modular Weapon System** → easily extendable with new weapon types (shotguns, SMGs, pistols, rifles, snipers).
-- **Recoil & Bullet Spread** for realistic gunplay.
-- **Projectile Collision Detection** with objects and environment.
+
+-   **Modular Weapon Framework** → easily extend with shotguns, SMGs,
+    pistols, rifles, or snipers.
+-   **Recoil & Bullet Spread** for more realistic shooting.
+-   **Projectile Collision System** with environment and objects.
 
 ### 🏗️ World Interaction
-- **Animated Doors** → open/close on interaction.
-- **Interactive Elevator** → functional buttons with smooth movement.
-- **Collectibles** → items like keys and pickups.
-- **Customizable Ladders** → scalable size and climbable.
+
+-   **Animated Doors** → smooth open/close interaction.
+-   **Interactive Elevator** → functional buttons and realistic
+    movement.
+-   **Collectibles** → keys, pickups, and other interactive items.
+-   **Customizable Ladders** → scalable and fully climbable.
 
 ### 🎥 Player & Camera
-- **FPS Controls** → WASD movement + mouse look.
-- **Crouch Mechanic** → for stealth-focused gameplay.
-- **Lean** → look around corners without being detected.
-- **Dynamic HUD** → shows crosshair, ammo count, and interaction prompts.
+
+-   **FPS Controls** → WASD for movement, mouse for camera.
+-   **Crouching** → press CTRL to crouch.
+-   **Leaning** → Q and E to peek around corners.
+-   **Interaction System** → F to pick up items, weapons, and objects.
+-   **Drop Mechanic** → G to drop held items or weapons.
+-   **Dynamic HUD** → includes crosshair, ammo counter, and interaction
+    prompts.
 
 ### ⚡ Miscellaneous
-- **Reusable Scripts** → modular and expandable components.
-- **Sound Effects** → footsteps, weapons, doors, elevator, and more.
-- **Expandable Structure** → ready for adding new levels, and mechanics.
 
----
+-   **Reusable, Modular Scripts** for easy expansion.
+-   **Sound Design** → footsteps, weapons, doors, elevator, and more.
+-   **Expandable Structure** → built to support new mechanics, maps, and
+    levels.
+
+------------------------------------------------------------------------
 
 ## 📌 Notes
-This is a **prototype**, meant as a foundation for building stealth FPS projects in Godot.  
-Feel free to expand, modify, and adapt it for your own ideas!
+
+This project is a **prototype**, serving as a solid base for creating
+stealth FPS games in Godot.\
+You are free to expand, customize, and adapt it for your own projects!
