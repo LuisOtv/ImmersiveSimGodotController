@@ -25,11 +25,16 @@ extends CharacterBody3D
 @onready var standingPosition: Marker3D = $Standing
 
 # Movement speeds
-var currentSpeed = 4.0
+var currentSpeed := 0.0
+##Max speed when walking
 @export var walkingSpeed = 4.0
+##Max speed when running
 @export var runningSpeed = 6.0
+##Max speed when crouching
 @export var crouchingSpeed = 2.0
+##Speed when climbing ladders
 @export var ladderSpeed = 1.2
+##Jump Height
 @export var jumpVelocity = 5.0
 
 # Mouse sensitivity and camera limits

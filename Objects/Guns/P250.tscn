@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://b0uafo3b7p4xc"]
 
-[ext_resource type="Script" uid="uid://brvd7sjgga40y" path="res://Scripts/GunObject.gd" id="1_3xp2k"]
+[ext_resource type="Script" uid="uid://ca6806unwpdyd" path="res://Scripts/GunObject.gd" id="1_3xp2k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cj06k"]
 size = Vector3(0.0683594, 0.095459, 0.427734)
@@ -63,12 +63,12 @@ blend_shape_mode = 0
 collision_layer = 4
 continuous_cd = true
 script = ExtResource("1_3xp2k")
-objectName = "p250"
+objectName = "P250"
 currentAmmo = 7
 magazineSize = 7
 extraAmmo = 35
-gunRecoilAmount = 8.0
-reloadTime = 80
+gunRecoilAmount = 5.0
+reloadTime = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0690523, -0.122559)

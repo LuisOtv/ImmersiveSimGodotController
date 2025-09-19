@@ -1,7 +1,8 @@
 extends StaticBody3D
 
 # NPC properties
-@export var objectName: String = 'NPC'
+##This is the name that will appear on the HUD when looking at it
+@export var objectName := "Holder"
 @export var speechLines: Array[String]
 @export var isTarget := false
 

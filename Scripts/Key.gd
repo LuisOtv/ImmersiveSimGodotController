@@ -1,8 +1,9 @@
 extends StaticBody3D
 
 # Key properties
+##This is the name that will appear on the HUD when looking at it
+@export var objectName := "Holder"
 @export var keyName : String
-@export var objectName : String
 
 # Handle key pickup
 func _interact():

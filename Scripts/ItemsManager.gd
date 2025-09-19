@@ -7,7 +7,6 @@ extends Node3D
 @onready var lowerPosition: Marker3D = $"../../LowerPos"
 
 # Weapon references
-@export_category("Weapons")
 @onready var p250: Node3D = $P250
 @onready var m4: Node3D = $M4
 @onready var m24: Node3D = $M24
@@ -46,7 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # Pick up a weapon with given settings
 func _pickupGun(weaponSettings):
 	# Get the weapon node based on name
-	currentGun = get(weaponSettings["Gun"])
+	currentGun = get(weaponSettings["Gun"].to_lower())
 
 	# Apply all weapon settings
 	currentGun.isActive = true
@@ -54,7 +53,7 @@ func _pickupGun(weaponSettings):
 	currentGun.magazineSize = weaponSettings["MagSize"]
 	currentGun.extraAmmo = weaponSettings["ExtraAmmo"]
 	currentGun.isAutomatic = weaponSettings["Auto"]
-	currentGun.burstPerMinute = weaponSettings["BPM"]
+	currentGun.timeBetweenShots = weaponSettings["BPM"]
 	currentGun.gunRecoilAmount = weaponSettings["GunRecoil"]
 	currentGun.cameraRecoilAmount = weaponSettings["CamRecoil"]
 	currentGun.reloadTime = weaponSettings["ReloadTime"]
@@ -80,7 +79,7 @@ func _dropGun():
 	droppedGun.magazineSize = currentGun.magazineSize
 	droppedGun.extraAmmo = currentGun.extraAmmo
 	droppedGun.isAutomatic = currentGun.isAutomatic
-	droppedGun.burstPerMinute = currentGun.burstPerMinute
+	droppedGun.timeBetweenShots = currentGun.timeBetweenShots
 	droppedGun.currentAmmo = currentGun.currentAmmo
 	droppedGun.reloadTime = currentGun.reloadTime
 	droppedGun.gunRecoilAmount = currentGun.gunRecoilAmount

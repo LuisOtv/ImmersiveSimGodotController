@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://xt21uw7ybdsj"]
 
-[ext_resource type="Script" uid="uid://55jeli5k1xl6" path="res://Scripts/Holdable.gd" id="1_cx421"]
+[ext_resource type="Script" uid="uid://idot7kk0uxsy" path="res://Scripts/Holdable.gd" id="1_cx421"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trqqn"]
 albedo_color = Color(0, 1, 0, 1)
@@ -13,7 +13,6 @@ material = SubResource("StandardMaterial3D_trqqn")
 [node name="Box" type="RigidBody3D" groups=["Interactable", "Object"]]
 collision_layer = 5
 script = ExtResource("1_cx421")
-object = "Box"
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_trqqn")

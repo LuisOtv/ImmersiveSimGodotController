@@ -24,10 +24,10 @@ var pelletCount: int
 # --- Weapon Configuration ---
 var isAutomatic: bool
 var isShotgun: bool
-var burstPerMinute: int
-var gunRecoilAmount: int
-var cameraRecoilAmount: int
-var scopeFieldOfView: int
+var timeBetweenShots: float
+var gunRecoilAmount: float
+var cameraRecoilAmount: float
+var scopeFieldOfView: float
 var timeOut: int
 
 # --- Shooting Direction ---
@@ -101,14 +101,8 @@ func _handleScoping():
 
 # Handle weapon shooting based on weapon type
 func _handleShooting() -> void:
-	if isShotgun:
-		# Shotgun: single shot per click
-		if Input.is_action_just_pressed("ui_mouse_1"):
-			if currentAmmo > 0:
-				_shoot()
-			else:
-				emptySoundPlayer.play()
-	elif isAutomatic:
+
+	if isAutomatic:
 		# Automatic: continuous fire with rate limiting
 		if Input.is_action_pressed("ui_mouse_1"):
 			if currentBurstPerMinute <= 0:
@@ -139,7 +133,7 @@ func _shoot() -> void:
 	if currentAmmo > 0 and timeOut >= 0:
 		# Consume ammo
 		currentAmmo -= 1
-		currentBurstPerMinute = burstPerMinute
+		currentBurstPerMinute = timeBetweenShots
 		flashTimer = 1
 
 		# Create bullets based on weapon type
@@ -184,7 +178,7 @@ func _reset():
 	isAutomatic = false
 	isActive = false
 	extraAmmo = 0
-	burstPerMinute = 0
+	timeBetweenShots = 0
 	currentAmmo = 0
 	magazineSize = 0
 	ammoLabel.text = ""

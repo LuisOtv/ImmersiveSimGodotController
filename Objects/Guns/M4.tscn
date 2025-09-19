@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://bsc7ltilnibed"]
 
-[ext_resource type="Script" uid="uid://brvd7sjgga40y" path="res://Scripts/GunObject.gd" id="1_qsad0"]
+[ext_resource type="Script" uid="uid://ca6806unwpdyd" path="res://Scripts/GunObject.gd" id="1_qsad0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cj06k"]
 size = Vector3(0.0683594, 0.148742, 1.64786)
@@ -85,14 +85,15 @@ shadow_mesh = SubResource("ArrayMesh_f86ph")
 collision_layer = 4
 continuous_cd = true
 script = ExtResource("1_qsad0")
-objectName = "m4"
+objectName = "M4"
 currentAmmo = 24
 magazineSize = 24
 extraAmmo = 48
 isAutomatic = true
-burstPerMinute = 10.0
-gunRecoilAmount = 5.0
-reloadTime = 120
+isShotgun = true
+timeBetweenShots = 5.0
+gunRecoilAmount = 0.2
+reloadTime = 60.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000373498, 0.0530855, -0.146596)

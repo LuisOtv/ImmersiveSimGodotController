@@ -1,7 +1,8 @@
 extends RigidBody3D
 
 # Holdable object properties
-@export var objectName: String = "ObjectName"
+##This is the name that will appear on the HUD when looking at it
+@export var objectName := "Holder"
 @onready var collisionShape: CollisionShape3D = $Colision
 
 # Reference to items manager

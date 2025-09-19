@@ -1,7 +1,8 @@
 extends StaticBody3D
 
 # Door properties
-@export var objectName: String = "Door"
+##This is the name that will appear on the HUD when looking at it
+@export var objectName := "Holder"
 @export var isLocked: bool
 @export var requiredKey: String
 
@@ -19,18 +20,22 @@ var isOpen = false
 func _interact():
 	# Check if door is locked
 	if isLocked:
-		# Try to unlock with lockpick
-		if PlayerStats.hasLockPick:
-			_unlock()
-			return
-
 		# Try to unlock with matching key
 		for keyName in PlayerStats.keys:
 			if keyName == requiredKey:
 				_unlock()
 	else:
 		# Open/close door if not currently animating
-		if !animationPlayer.is_playing():
+		_open()
+				
+# Unlock the door
+func _unlock():
+	isLocked = false
+	unlockDoorSound.play()
+	_open()
+	
+func _open():
+	if !animationPlayer.is_playing():
 			openDoorSound.play()
 
 			if isOpen:
@@ -39,8 +44,3 @@ func _interact():
 			else:
 				animationPlayer.play("open")
 				isOpen = true
-				
-# Unlock the door
-func _unlock():
-	isLocked = false
-	unlockDoorSound.play()
