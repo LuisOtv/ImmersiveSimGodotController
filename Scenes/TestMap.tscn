@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cshvmp6a3xbcu"]
+[gd_scene load_steps=24 format=3 uid="uid://cshvmp6a3xbcu"]
 
 [ext_resource type="PackedScene" uid="uid://cpmokfsmky3pa" path="res://Objects/Player.tscn" id="1_151je"]
 [ext_resource type="PackedScene" uid="uid://xt21uw7ybdsj" path="res://Objects/Map/Box.tscn" id="2_hfbqk"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bsc7ltilnibed" path="res://Objects/Guns/M4.tscn" id="4_l2dxr"]
 [ext_resource type="PackedScene" uid="uid://b0uafo3b7p4xc" path="res://Objects/Guns/P250.tscn" id="5_040lc"]
 [ext_resource type="PackedScene" uid="uid://dyxlkyac63exi" path="res://Objects/Guns/M24.tscn" id="6_w8t4k"]
-[ext_resource type="PackedScene" uid="uid://dehm7l2x4buri" path="res://Objects/Guns/AutoShotgun.tscn" id="7_151je"]
 [ext_resource type="PackedScene" uid="uid://exf3lb8t6d4x" path="res://Objects/Guns/Browning.tscn" id="7_n1xgc"]
 [ext_resource type="Texture2D" uid="uid://cwhtft3weugcx" path="res://Textures/Colors/Green.png" id="8_6gndh"]
 [ext_resource type="PackedScene" uid="uid://tqbxlkgu2ylf" path="res://Objects/Map/Door.tscn" id="9_h5ktn"]
@@ -90,9 +89,6 @@ extraAmmo = 20
 transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, -0.90275, -0.251112, 0)
 extraAmmo = 12
 
-[node name="AutoShotgun" parent="Guns" instance=ExtResource("7_151je")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1999998, -0.3, -0.099999905)
-
 [node name="Door" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
 
@@ -102,7 +98,7 @@ size = Vector3(6, 1, 6)
 material = SubResource("StandardMaterial3D_u8elp")
 
 [node name="Key" parent="Door" instance=ExtResource("10_hnl4h")]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.77776504, 0.601985, 0)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -0.82223463, 0.601985, 0)
 collision_layer = 5
 collision_mask = 1
 objectName = "Door Key"
@@ -112,7 +108,7 @@ keyName = "Wood Door"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
 
 [node name="LockedDoor" parent="Door" instance=ExtResource("9_h5ktn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5999999, -0.5, 0)
 
 [node name="StaticBody3D" parent="Door/LockedDoor" index="0"]
 isLocked = true
@@ -139,11 +135,6 @@ speechLines = Array[String](["Hi", "I miss my wife"])
 [node name="NPC3" parent="NPCs" instance=ExtResource("12_6eg4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0466201, 0.5, 1.5836802)
 objectName = "Charlie Chaplin"
-
-[node name="NPC4" parent="NPCs" instance=ExtResource("12_6eg4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0466204, 0.5, 1.5836802)
-objectName = "New NPC"
-speechLines = Array[String](["You can add speech lines", "they will be picked at random", "if you want", "you can have none also"])
 
 [node name="Window" parent="NPCs" instance=ExtResource("13_vq8a5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05218, 0.5, -2.79882)
