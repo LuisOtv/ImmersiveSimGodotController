@@ -90,9 +90,9 @@ currentAmmo = 24
 magazineSize = 24
 extraAmmo = 48
 isAutomatic = true
-isShotgun = true
 timeBetweenShots = 5.0
-gunRecoilAmount = 0.2
+gunRecoilAmount = 2.0
+cameraRecoilAmount = 2.0
 reloadTime = 60.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

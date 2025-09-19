@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://exf3lb8t6d4x"]
+[gd_scene load_steps=13 format=4 uid="uid://exf3lb8t6d4x"]
 
 [ext_resource type="Script" uid="uid://ca6806unwpdyd" path="res://Scripts/GunObject.gd" id="1_r6k78"]
 
@@ -9,6 +9,7 @@ size = Vector3(0.0683594, 0.122223, 1.05977)
 size = Vector3(0.0256348, 0.277203, 0.580841)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n66bi"]
+cull_mode = 1
 albedo_color = Color(0.956863, 0.0745098, 0.462745, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xkuwy"]
@@ -115,8 +116,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1pudy")
 
-[sub_resource type="BoxMesh" id="BoxMesh_n66bi"]
-
 [node name="Browning" type="RigidBody3D" groups=["Interactable", "Object"]]
 collision_layer = 4
 continuous_cd = true
@@ -153,7 +152,3 @@ skeleton = NodePath("")
 transform = Transform3D(0, -4.20593e-10, -0.0190521, -0.019505, 0, 0, 0, 0.019443, -1.6828e-09, 0.00134576, 0.0267183, 0.0298654)
 mesh = SubResource("ArrayMesh_0n026")
 skeleton = NodePath("")
-
-[node name="Metal" type="MeshInstance3D" parent="."]
-transform = Transform3D(-3.61376e-09, 0, -0.0412819, 0, 0.0966316, 0, 0.167055, 0, -3.64627e-09, 0.00134578, 0.0430062, 0.0439898)
-mesh = SubResource("BoxMesh_n66bi")

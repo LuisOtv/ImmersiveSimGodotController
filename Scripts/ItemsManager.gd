@@ -11,6 +11,7 @@ extends Node3D
 @onready var m4: Node3D = $M4
 @onready var m24: Node3D = $M24
 @onready var browning: Node3D = $Browning
+@onready var autoshotgun: Node3D = $AutoShotgun
 
 # State variables
 var isHoldingGun: bool

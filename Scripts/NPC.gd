@@ -12,6 +12,8 @@ extends StaticBody3D
 # Handle NPC interaction
 func _interact():
 	# Show dialogue with random speech line
+	if speechLines.size() == 0 : return
+
 	textBoxUI.visible = true
 	textBoxUI.currentText = speechLines.pick_random()
 	textBoxUI.updateText()

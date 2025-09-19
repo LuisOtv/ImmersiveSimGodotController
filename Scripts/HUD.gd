@@ -7,6 +7,7 @@ extends Control
 @onready var crosshairTextContainer: Control = $CrosshairText
 @onready var crosshairNode: Node3D = $"../Neck/CrossHair"
 @onready var gunTargetMarker: Marker3D = $"../Neck/Camera3D/SpringArm3D/GunTarget"
+@onready var current_pressing: Label = $CurrentPressing
 
 func _process(_deltaTime: float) -> void:
 	# Update distance display
@@ -16,3 +17,7 @@ func _process(_deltaTime: float) -> void:
 	var crosshairScreenPosition = cameraNode.unproject_position(crosshairNode.position)
 	crosshairNode.global_position = lerp(crosshairNode.global_position, gunTargetMarker.global_position, 0.3)
 	crosshairTextContainer.position = crosshairScreenPosition
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	var key_name = OS.get_keycode_string(event.keycode)
+	current_pressing.text = str(key_name)

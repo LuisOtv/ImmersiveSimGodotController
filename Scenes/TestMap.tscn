@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cshvmp6a3xbcu"]
+[gd_scene load_steps=25 format=3 uid="uid://cshvmp6a3xbcu"]
 
 [ext_resource type="PackedScene" uid="uid://cpmokfsmky3pa" path="res://Objects/Player.tscn" id="1_151je"]
 [ext_resource type="PackedScene" uid="uid://xt21uw7ybdsj" path="res://Objects/Map/Box.tscn" id="2_hfbqk"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bsc7ltilnibed" path="res://Objects/Guns/M4.tscn" id="4_l2dxr"]
 [ext_resource type="PackedScene" uid="uid://b0uafo3b7p4xc" path="res://Objects/Guns/P250.tscn" id="5_040lc"]
 [ext_resource type="PackedScene" uid="uid://dyxlkyac63exi" path="res://Objects/Guns/M24.tscn" id="6_w8t4k"]
+[ext_resource type="PackedScene" uid="uid://dehm7l2x4buri" path="res://Objects/Guns/AutoShotgun.tscn" id="7_151je"]
 [ext_resource type="PackedScene" uid="uid://exf3lb8t6d4x" path="res://Objects/Guns/Browning.tscn" id="7_n1xgc"]
 [ext_resource type="Texture2D" uid="uid://cwhtft3weugcx" path="res://Textures/Colors/Green.png" id="8_6gndh"]
 [ext_resource type="PackedScene" uid="uid://tqbxlkgu2ylf" path="res://Objects/Map/Door.tscn" id="9_h5ktn"]
-[ext_resource type="PackedScene" uid="uid://dgrimtsurb2vo" path="res://Objects/Items/key.tscn" id="10_hnl4h"]
+[ext_resource type="PackedScene" uid="uid://dgrimtsurb2vo" path="res://Objects/Items/Key.tscn" id="10_hnl4h"]
 [ext_resource type="Texture2D" uid="uid://di15gonqn8we5" path="res://Textures/Colors/Orange.png" id="11_6l6jm"]
 [ext_resource type="PackedScene" uid="uid://bi4pe0wm4a0rq" path="res://Objects/NPC.tscn" id="12_6eg4l"]
 [ext_resource type="PackedScene" uid="uid://3682hmwkoi58" path="res://Objects/Map/Window.tscn" id="13_vq8a5"]
@@ -71,28 +72,26 @@ size = Vector3(6, 1, 6)
 material = SubResource("StandardMaterial3D_vts2g")
 
 [node name="M4" parent="Guns" instance=ExtResource("4_l2dxr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.603873, -0.294105, -2.00994)
-currentAmmo = 30
-magazineSize = 30
-extraAmmo = 240
-pelletCount = 30
-isShotgun = false
+transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, -0.30387306, -0.294105, -0.009940147)
 
 [node name="P250" parent="Guns" instance=ExtResource("5_040lc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.49071, -0.327973, -2.0167)
+transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, 0.19071007, -0.327973, -0.016699791)
 currentAmmo = 12
 magazineSize = 12
 extraAmmo = 36
 
 [node name="M24" parent="Guns" instance=ExtResource("6_w8t4k")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.01019, -0.279541, -2)
+transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, 0.7101903, -0.279541, 0)
 currentAmmo = 5
 magazineSize = 5
 extraAmmo = 20
 
 [node name="Browning" parent="Guns" instance=ExtResource("7_n1xgc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.20275, -0.251112, -2)
+transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, -0.90275, -0.251112, 0)
 extraAmmo = 12
+
+[node name="AutoShotgun" parent="Guns" instance=ExtResource("7_151je")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1999998, -0.3, -0.099999905)
 
 [node name="Door" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
@@ -128,10 +127,23 @@ size = Vector3(6, 1, 6)
 material = SubResource("StandardMaterial3D_5lpmd")
 
 [node name="NPC" parent="NPCs" instance=ExtResource("12_6eg4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05338, 0.5, 1.58368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8533802, 0.5, 1.5836802)
+objectName = "Robertson Brian"
+speechLines = Array[String](["I exist !"])
 
 [node name="NPC2" parent="NPCs" instance=ExtResource("12_6eg4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94662, 0.5, 1.58368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14662004, 0.5, 1.5836802)
+objectName = "Andrew Laedis"
+speechLines = Array[String](["Hi", "I miss my wife"])
+
+[node name="NPC3" parent="NPCs" instance=ExtResource("12_6eg4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0466201, 0.5, 1.5836802)
+objectName = "Charlie Chaplin"
+
+[node name="NPC4" parent="NPCs" instance=ExtResource("12_6eg4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0466204, 0.5, 1.5836802)
+objectName = "New NPC"
+speechLines = Array[String](["You can add speech lines", "they will be picked at random", "if you want", "you can have none also"])
 
 [node name="Window" parent="NPCs" instance=ExtResource("13_vq8a5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05218, 0.5, -2.79882)

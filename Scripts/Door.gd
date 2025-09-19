@@ -4,6 +4,7 @@ extends StaticBody3D
 ##This is the name that will appear on the HUD when looking at it
 @export var objectName := "Holder"
 @export var isLocked: bool
+##This key "Id", on the key, set the "keyName" variable the same name as this.
 @export var requiredKey: String
 
 # Audio components
