@@ -7,3 +7,9 @@ func _ready() -> void:
 	for i in 9:
 		var slot = hotbarSlot.instantiate()
 		bar.add_child(slot)
+	
+func _pickUpItem(item):
+	for i in bar.get_children():
+		if i.item.is_empty():
+			i.item = item
+			break

@@ -11,8 +11,7 @@ extends Node3D
 # --- Weapon State Variables ---
 var flashTimer: int
 var isActive: bool
-var currentBurstPerMinute: int
-
+var currentBurstPerMinute: float
 # --- Ammo System ---
 var currentAmmo: int
 var magazineSize: int
