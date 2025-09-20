@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+.godot/       export-ignore
+.DS_STORE       export-ignore
+.editorconfig       export-ignore
