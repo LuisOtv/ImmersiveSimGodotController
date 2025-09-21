@@ -82,6 +82,5 @@ func _pickupGunInventory():
 		"ScopeFov" : scopeFieldOfView,
 	}
 
-	# Only pickup if player isn't already holding a gun
 	queue_free()
 	inventory._pickUpItem(weaponSettings)

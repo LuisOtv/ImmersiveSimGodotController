@@ -1,25 +1,41 @@
 extends Node
 
-var isHovering := false
-var item : Dictionary
-@onready var panel: Panel = $Panel
+var item := {}
+var space : int
+@onready var hasItem: Panel = $HasItem
+@onready var isActive: Panel = $IsActive
 
 # Reference to weapons manager
 @onready var weaponsManager = get_tree().get_first_node_in_group("ItemsManager")
 
+func _ready() -> void:
+	print(space)
+
 func _process(_delta: float) -> void:
-	if !item.is_empty():
-		panel.visible = true
+	if item != {}:
+		hasItem.visible = true
+	else:
+		hasItem.visible = false
 
-	if isHovering and item != null:
-		if Input.is_action_pressed("ui_mouse_1"):
-			for i in weaponsManager.get_children():
-				if i is Node3D and i.has_method("_reset"):
-					i._reset()
+	if Input.is_action_just_pressed("ui_slot_" + str(space)):
+		if !item.is_empty():
+			if weaponsManager.currentGun != null :
+				weaponsManager.currentSlot.update(weaponsManager.currentGun.get_dic())
+				weaponsManager.currentGun._reset()
+			if weaponsManager.currentSlot != null :
+				weaponsManager.currentSlot.deselect()
+			
 			weaponsManager._pickupGun(item)
+			weaponsManager.currentSlot = self
+			isActive.visible = true
 
-func _on_mouse_entered() -> void:
-	isHovering = true
+func update(new):
+	item = new
 
-func _on_mouse_exited() -> void:
-	isHovering = false
+func reset():
+	isActive.visible = false
+	item = {}
+
+func deselect():
+	isActive.visible = false
+	

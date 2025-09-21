@@ -44,8 +44,6 @@ var shootDirection: Vector3
 @onready var lowerPosition: Marker3D = $"../../../LowerPos"
 @onready var shoulderPosition: Marker3D = $"../../ShoulderPos"
 
-@onready var playerNode = get_tree().get_first_node_in_group("Player")
-
 # --- Main Process Loop ---
 func _process(_deltaTime: float) -> void:
 	# Calculate shooting direction
@@ -174,11 +172,27 @@ func _createBullet(direction: Vector3) -> void:
 
 # --- Weapon Reset ---
 func _reset():
-	isAutomatic = false
-	isActive = false
-	extraAmmo = 0
-	timeBetweenShots = 0
-	currentAmmo = 0
-	magazineSize = 0
-	ammoLabel.text = ""
-	extraAmmoLabel.text = ""
+		isActive = false
+		isAutomatic = false
+		extraAmmo = 0
+		timeBetweenShots = 0
+		currentAmmo = 0
+		magazineSize = 0
+		ammoLabel.text = ""
+		extraAmmoLabel.text = ""
+
+func get_dic():
+	return{
+		"Gun": objectName,
+		"CurAmmo" : currentAmmo,
+		"MagSize" : magazineSize,
+		"ExtraAmmo" : extraAmmo,
+		"Auto" : isAutomatic,
+		"BPM" : timeBetweenShots,
+		"GunRecoil" : gunRecoilAmount,
+		"CamRecoil" : cameraRecoilAmount,
+		"ReloadTime" : reloadTime,
+		"Shotgun" : isShotgun,
+		"Pellets" : pelletCount,
+		"ScopeFov" : scopeFieldOfView,
+	}

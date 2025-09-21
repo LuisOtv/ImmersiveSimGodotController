@@ -6,6 +6,7 @@ const hotbarSlot = preload("uid://dq5wfh5ebspwp")
 func _ready() -> void:
 	for i in 9:
 		var slot = hotbarSlot.instantiate()
+		slot.space = i + 1
 		bar.add_child(slot)
 	
 func _pickUpItem(item):

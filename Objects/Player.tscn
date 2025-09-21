@@ -1,28 +1,28 @@
 [gd_scene load_steps=76 format=4 uid="uid://cpmokfsmky3pa"]
 
-[ext_resource type="Script" uid="uid://br13ge4bllfau" path="res://Scripts/Player.gd" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://dl153nf43v0bq" path="res://Scripts/Player.gd" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://mh486nesy18d" path="res://Scripts/RayCast.gd" id="2_kpjcp"]
-[ext_resource type="Script" uid="uid://fllp3hhkgoco" path="res://Scripts/ItemsManager.gd" id="3_utwlt"]
-[ext_resource type="Texture2D" uid="uid://dtrfpday11vw5" path="res://Textures/OuterCrossHair.png" id="4_m0x7a"]
+[ext_resource type="Script" uid="uid://b6dfdeuwv2dr6" path="res://Scripts/ItemsManager.gd" id="3_utwlt"]
+[ext_resource type="Texture2D" uid="uid://dlbpxi3ebp1m4" path="res://Textures/OuterCrossHair.png" id="4_m0x7a"]
 [ext_resource type="PackedScene" uid="uid://b0uafo3b7p4xc" path="res://Objects/Guns/P250.tscn" id="5_g1u4f"]
-[ext_resource type="Script" uid="uid://dt2s0nfg0py7l" path="res://Scripts/Gun.gd" id="5_tdg3f"]
-[ext_resource type="AudioStream" uid="uid://brrydyrvibud3" path="res://Sounds/Fire.mp3" id="7_dtqjt"]
+[ext_resource type="Script" uid="uid://bkf3yqtdu5dsn" path="res://Scripts/Gun.gd" id="5_tdg3f"]
+[ext_resource type="AudioStream" uid="uid://b22c6qdq1bqhm" path="res://Sounds/Fire.mp3" id="7_dtqjt"]
 [ext_resource type="PackedScene" uid="uid://dyxlkyac63exi" path="res://Objects/Guns/M24.tscn" id="7_kwjl5"]
-[ext_resource type="AudioStream" uid="uid://po32uy3rt2r5" path="res://Sounds/Equip.mp3" id="8_bhhdu"]
+[ext_resource type="AudioStream" uid="uid://cm76tcsc65aib" path="res://Sounds/Equip.mp3" id="8_bhhdu"]
 [ext_resource type="PackedScene" uid="uid://c2vpyaxqwf0sx" path="res://Objects/Guns/Bullet.tscn" id="8_g1u4f"]
-[ext_resource type="Texture2D" uid="uid://d0082sucg3chy" path="res://Textures/MuzzleFlashFace.png" id="8_miouo"]
-[ext_resource type="Texture2D" uid="uid://4ihlijtqikys" path="res://Textures/MuzzleFlash.png" id="8_o3h8g"]
+[ext_resource type="Texture2D" uid="uid://dvhlxdk5y75cw" path="res://Textures/MuzzleFlashFace.png" id="8_miouo"]
+[ext_resource type="Texture2D" uid="uid://dpc4624uu1ql3" path="res://Textures/MuzzleFlash.png" id="8_o3h8g"]
 [ext_resource type="PackedScene" uid="uid://bsc7ltilnibed" path="res://Objects/Guns/M4.tscn" id="9_vy1ne"]
-[ext_resource type="AudioStream" uid="uid://gfii73pyv3an" path="res://Sounds/Empty.mp3" id="11_glx4g"]
+[ext_resource type="AudioStream" uid="uid://d2cjms015v5gv" path="res://Sounds/Empty.mp3" id="11_glx4g"]
 [ext_resource type="PackedScene" uid="uid://exf3lb8t6d4x" path="res://Objects/Guns/Browning.tscn" id="11_qsaej"]
-[ext_resource type="FontFile" uid="uid://cskaj0ktvkviu" path="res://Fonts/IBMPlexMono-Medium.ttf" id="16_m0x7a"]
+[ext_resource type="FontFile" uid="uid://c86r3uua3an8r" path="res://Fonts/IBMPlexMono-Medium.ttf" id="16_m0x7a"]
 [ext_resource type="Script" uid="uid://c188jt8vaaemo" path="res://Scripts/CrossHair.gd" id="17_8flut"]
-[ext_resource type="Script" uid="uid://bhyqve11ikrxm" path="res://Scripts/Inventory.gd" id="18_xw48w"]
-[ext_resource type="AudioStream" uid="uid://cjrmq2nfrx8m1" path="res://Sounds/Reloading.mp3" id="19_m0x7a"]
-[ext_resource type="Script" uid="uid://m0vi0hyggxh1" path="res://Scripts/HUD.gd" id="19_qidb7"]
+[ext_resource type="Script" uid="uid://d0ebgsovnduqi" path="res://Scripts/Inventory.gd" id="18_xw48w"]
+[ext_resource type="AudioStream" uid="uid://cel1uroqf5tyv" path="res://Sounds/Reloading.mp3" id="19_m0x7a"]
+[ext_resource type="Script" uid="uid://wwrgef5xe76t" path="res://Scripts/HUD.gd" id="19_qidb7"]
 [ext_resource type="Script" uid="uid://depaqi6jc3fbs" path="res://Scripts/TextBox.gd" id="21_u7x0b"]
-[ext_resource type="Texture2D" uid="uid://dhfc7vs7g6r4m" path="res://Textures/CrossHair.png" id="22_avx33"]
-[ext_resource type="AudioStream" uid="uid://b1w8w8vb1by54" path="res://Sounds/ShotgunReload.mp3" id="24_70hv0"]
+[ext_resource type="Texture2D" uid="uid://daovtuaxlk1eo" path="res://Textures/CrossHair.png" id="22_avx33"]
+[ext_resource type="AudioStream" uid="uid://cdmms7bka7kpy" path="res://Sounds/ShotgunReload.mp3" id="24_70hv0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
 radius = 0.4
@@ -603,11 +603,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15375, 0)
 target_position = Vector3(0, 1, 0)
 
 [node name="RightDetect" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15375, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44625002, 0)
 target_position = Vector3(1.2, 0, 0)
 
 [node name="LeftDetect" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15375, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44625002, 0)
 target_position = Vector3(-1.2, 0, 0)
 
 [node name="StandingCol" type="CollisionShape3D" parent="."]
@@ -705,6 +705,7 @@ skeleton = NodePath("")
 [node name="M4" type="Node3D" parent="Neck/Camera3D/ItemsManager" node_paths=PackedStringArray("fireSoundPlayer", "reloadSoundPlayer", "emptySoundPlayer")]
 visible = false
 script = ExtResource("5_tdg3f")
+objectName = "m4"
 gunDropPrefab = ExtResource("9_vy1ne")
 bulletPrefab = ExtResource("8_g1u4f")
 fireSoundPlayer = NodePath("../../../../Sounds/Fire")
