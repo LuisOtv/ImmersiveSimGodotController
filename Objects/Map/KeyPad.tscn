@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://l2s8vjk0akda"]
+
+[ext_resource type="Script" uid="uid://clghcexioloww" path="res://Scripts/KeyPad.gd" id="1_hcbo1"]
+[ext_resource type="Script" uid="uid://cojr3diiwowle" path="res://Scripts/KeyPadButton.gd" id="2_h3fs8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gxypy"]
+size = Vector3(0.4, 0.6, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ete0w"]
+albedo_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hcbo1"]
+material = SubResource("StandardMaterial3D_ete0w")
+size = Vector3(0.1, 0.05, 0.1)
+
+[node name="KeyPad" type="StaticBody3D"]
+script = ExtResource("1_hcbo1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gxypy")
+
+[node name="Button" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
+script = ExtResource("2_h3fs8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button"]
+mesh = SubResource("BoxMesh_hcbo1")

@@ -131,10 +131,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14662004, 0.5, 1.5836802)
 objectName = "Andrew Laedis"
 speechLines = Array[String](["Hi", "I miss my wife"])
 
-[node name="NPC3" parent="NPCs" instance=ExtResource("12_6eg4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0466201, 0.5, 1.5836802)
-objectName = "Charlie Chaplin"
-
 [node name="Window" parent="NPCs" instance=ExtResource("13_vq8a5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05218, 0.5, -2.79882)
 
