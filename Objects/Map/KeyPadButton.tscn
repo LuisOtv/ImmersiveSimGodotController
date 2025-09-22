@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwo5sir08a8q8"]
+
+[ext_resource type="Script" uid="uid://cojr3diiwowle" path="res://Scripts/KeyPadButton.gd" id="1_3rlmb"]
+[ext_resource type="FontFile" uid="uid://c86r3uua3an8r" path="res://Fonts/IBMPlexMono-Medium.ttf" id="2_e0opt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ete0w"]
+albedo_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hcbo1"]
+material = SubResource("StandardMaterial3D_ete0w")
+size = Vector3(0.1, 0.05, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3rlmb"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3rlmb"]
+size = Vector3(0.1, 0.05, 0.1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3rlmb"]
+font = ExtResource("2_e0opt")
+font_size = 30
+
+[node name="Button" type="StaticBody3D" groups=["Interactable", "Object"]]
+collision_layer = 71
+script = ExtResource("1_3rlmb")
+objectName = "Button"
+number = "0"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hcbo1")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.12643996, 0, 0, 0, 0.12073302, 0, 0, 0, 1, 0, 0, 0.050945133)
+texture = SubResource("ViewportTexture_3rlmb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3rlmb")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(30, 30)
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_3rlmb")
+horizontal_alignment = 1
+vertical_alignment = 1

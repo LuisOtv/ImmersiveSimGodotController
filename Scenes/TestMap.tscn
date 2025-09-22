@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cshvmp6a3xbcu"]
+[gd_scene load_steps=25 format=3 uid="uid://cshvmp6a3xbcu"]
 
 [ext_resource type="PackedScene" uid="uid://cpmokfsmky3pa" path="res://Objects/Player.tscn" id="1_151je"]
 [ext_resource type="PackedScene" uid="uid://xt21uw7ybdsj" path="res://Objects/Map/Box.tscn" id="2_hfbqk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://exf3lb8t6d4x" path="res://Objects/Guns/Browning.tscn" id="7_n1xgc"]
 [ext_resource type="Texture2D" uid="uid://i4cc7tgngihe" path="res://Textures/Colors/Green.png" id="8_6gndh"]
 [ext_resource type="PackedScene" uid="uid://tqbxlkgu2ylf" path="res://Objects/Map/Door.tscn" id="9_h5ktn"]
+[ext_resource type="PackedScene" uid="uid://l2s8vjk0akda" path="res://Objects/Map/KeyPad.tscn" id="10_151je"]
 [ext_resource type="PackedScene" uid="uid://dgrimtsurb2vo" path="res://Objects/Items/Key.tscn" id="10_hnl4h"]
 [ext_resource type="Texture2D" uid="uid://cvnxnuand8bgk" path="res://Textures/Colors/Orange.png" id="11_6l6jm"]
 [ext_resource type="PackedScene" uid="uid://bi4pe0wm4a0rq" path="res://Objects/NPC.tscn" id="12_6eg4l"]
@@ -112,6 +113,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5999999, -0.5, 0)
 [node name="StaticBody3D" parent="Door/LockedDoor" index="0"]
 isLocked = true
 requiredKey = "Wood Door"
+
+[node name="KeyPad" parent="Door" instance=ExtResource("10_151je")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.7, 0)
 
 [node name="NPCs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)

@@ -1,27 +1,88 @@
-[gd_scene load_steps=6 format=3 uid="uid://l2s8vjk0akda"]
+[gd_scene load_steps=7 format=3 uid="uid://l2s8vjk0akda"]
 
 [ext_resource type="Script" uid="uid://clghcexioloww" path="res://Scripts/KeyPad.gd" id="1_hcbo1"]
-[ext_resource type="Script" uid="uid://cojr3diiwowle" path="res://Scripts/KeyPadButton.gd" id="2_h3fs8"]
+[ext_resource type="PackedScene" uid="uid://bwo5sir08a8q8" path="res://Objects/Map/KeyPadButton.tscn" id="2_hcbo1"]
+[ext_resource type="FontFile" uid="uid://c86r3uua3an8r" path="res://Fonts/IBMPlexMono-Medium.ttf" id="3_h3fs8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gxypy"]
-size = Vector3(0.4, 0.6, 0.1)
+size = Vector3(0.4, 0.4, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ete0w"]
-albedo_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+[sub_resource type="ViewportTexture" id="ViewportTexture_h3fs8"]
+viewport_path = NodePath("SubViewport")
 
-[sub_resource type="BoxMesh" id="BoxMesh_hcbo1"]
-material = SubResource("StandardMaterial3D_ete0w")
-size = Vector3(0.1, 0.05, 0.1)
+[sub_resource type="LabelSettings" id="LabelSettings_qa3p0"]
+font = ExtResource("3_h3fs8")
+font_size = 30
 
 [node name="KeyPad" type="StaticBody3D"]
 script = ExtResource("1_hcbo1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 mesh = SubResource("BoxMesh_gxypy")
 
-[node name="Button" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
-script = ExtResource("2_h3fs8")
+[node name="Node3D" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Button"]
-mesh = SubResource("BoxMesh_hcbo1")
+[node name="Button" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, 0, 0.019)
+number = "1"
+
+[node name="Button3" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0, 0.019)
+number = "3"
+
+[node name="Button2" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.019)
+number = "2"
+
+[node name="Button4" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, -0.07, 0.019)
+number = "4"
+
+[node name="Button5" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, -0.07, 0.019)
+number = "6"
+
+[node name="Button6" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, 0.019)
+number = "5"
+
+[node name="Button7" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, -0.14, 0.019)
+number = "7"
+
+[node name="Button8" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, -0.14, 0.019)
+number = "9"
+
+[node name="Button9" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14, 0.019)
+number = "8"
+
+[node name="Button10" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, -0.21, 0.019)
+number = "ER"
+
+[node name="Button11" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, -0.21, 0.019)
+number = "OK"
+
+[node name="Button12" parent="Node3D" instance=ExtResource("2_hcbo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21, 0.019)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.12643996, 0, 0, 0, 0.12073302, 0, 0, 0, 1, 0, 0.08600105, 0.050945133)
+texture = SubResource("ViewportTexture_h3fs8")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(240, 50)
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_qa3p0")
+horizontal_alignment = 1
+vertical_alignment = 1
