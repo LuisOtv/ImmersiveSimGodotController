@@ -59,11 +59,11 @@ number = "9"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14, 0.019)
 number = "8"
 
-[node name="Button10" parent="Node3D" instance=ExtResource("2_hcbo1")]
+[node name="ER" parent="Node3D" instance=ExtResource("2_hcbo1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, -0.21, 0.019)
 number = "ER"
 
-[node name="Button11" parent="Node3D" instance=ExtResource("2_hcbo1")]
+[node name="OK" parent="Node3D" instance=ExtResource("2_hcbo1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, -0.21, 0.019)
 number = "OK"
 

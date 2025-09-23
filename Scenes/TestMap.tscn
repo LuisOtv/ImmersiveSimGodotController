@@ -114,8 +114,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5999999, -0.5, 0)
 isLocked = true
 requiredKey = "Wood Door"
 
-[node name="KeyPad" parent="Door" instance=ExtResource("10_151je")]
+[node name="KeyPad" parent="Door" node_paths=PackedStringArray("door") instance=ExtResource("10_151je")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.7, 0)
+password = "1234"
+door = NodePath("../LockedDoor/StaticBody3D")
 
 [node name="NPCs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)

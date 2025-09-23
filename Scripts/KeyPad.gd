@@ -8,3 +8,12 @@ var current : String
 func addNumber(num):
 	current += num
 	label.text = current
+
+func erase():
+	current = ""
+	label.text = current
+	
+func checkPassword():
+	if current == password:
+		door._unlock()
+	erase()

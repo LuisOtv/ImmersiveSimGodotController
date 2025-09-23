@@ -11,4 +11,9 @@ func _ready() -> void:
 	label.text = number
 
 func _interact():
-	key_pad.addNumber(number)
+	if number == "OK":
+		key_pad.checkPassword()
+	elif number == "ER":
+		key_pad.erase()
+	else:
+		key_pad.addNumber(number)
