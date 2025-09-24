@@ -11,11 +11,11 @@ extends Node3D
 @onready var m4: Node3D = $M4
 @onready var m24: Node3D = $M24
 @onready var browning: Node3D = $Browning
-@onready var autoshotgun: Node3D = $AutoShotgun
 
 # State variables
 var isHoldingGun: bool
 var currentGun: Node3D
+var currentSlot: Control
 
 var isHoldingObject: bool
 var heldObject: Node3D
@@ -94,7 +94,8 @@ func _dropGun():
 	
 	isHoldingGun = false
 	currentGun = null
-
+	currentSlot.reset()
+	
 # Hold/carry an object
 func _holdObject(objectToHold):
 	isHoldingObject = true
@@ -107,3 +108,4 @@ func _throwObject():
 	heldObject.linear_velocity = throwDirection
 	heldObject.collisionShape.disabled = false
 	heldObject = null
+	currentSlot.reset()

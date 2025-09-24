@@ -48,7 +48,3 @@ intense combat or careful stealth.
 This project is a **prototype**, serving as a solid base for creating
 stealth FPS games in Godot.\
 You are free to expand, customize, and adapt it for your own projects!
-
-## 🎥 Video Showcase
-
-https://youtu.be/SX2ZPHMaKuU?si=SRjuQS3CCwIomaQt

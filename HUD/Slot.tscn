@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq5wfh5ebspwp"]
+
+[ext_resource type="Script" uid="uid://d3os42yd1py4e" path="res://Scripts/Slot.gd" id="1_touuo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsaej"]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Slot" type="Panel"]
+custom_minimum_size = Vector2(40, 40)
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qsaej")
+script = ExtResource("1_touuo")
+
+[node name="HasItem" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="IsActive" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -34,10 +34,12 @@ extends RigidBody3D
 
 # Reference to weapons manager
 @onready var weaponsManager = get_tree().get_first_node_in_group("ItemsManager")
+@onready var inventory = get_tree().get_first_node_in_group("Iventory")
 
 # Handle interaction (pickup)
 func _interact():
-	_pickupGun()
+	#_pickupGun()
+	_pickupGunInventory()
 
 # Pick up this weapon
 func _pickupGun():
@@ -61,3 +63,24 @@ func _pickupGun():
 	if !weaponsManager.isHoldingGun:
 		queue_free()
 		weaponsManager._pickupGun(weaponSettings)
+		
+# Pick up this weapon
+func _pickupGunInventory():
+	# Create settings dictionary with all weapon properties
+	var weaponSettings ={
+		"Gun": objectName,
+		"CurAmmo" : currentAmmo,
+		"MagSize" : magazineSize,
+		"ExtraAmmo" : extraAmmo,
+		"Auto" : isAutomatic,
+		"BPM" : timeBetweenShots,
+		"GunRecoil" : gunRecoilAmount,
+		"CamRecoil" : cameraRecoilAmount,
+		"ReloadTime" : reloadTime,
+		"Shotgun" : isShotgun,
+		"Pellets" : pelletCount,
+		"ScopeFov" : scopeFieldOfView,
+	}
+
+	queue_free()
+	inventory._pickUpItem(weaponSettings)
