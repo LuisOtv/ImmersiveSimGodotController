@@ -34,7 +34,7 @@ extends RigidBody3D
 
 # Reference to weapons manager
 @onready var weaponsManager = get_tree().get_first_node_in_group("ItemsManager")
-@onready var inventory = get_tree().get_first_node_in_group("Iventory")
+@onready var inventory = get_tree().get_first_node_in_group("Inventory")
 
 # Handle interaction (pickup)
 func _interact():

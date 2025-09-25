@@ -5,7 +5,7 @@ extends StaticBody3D
 @export var numberOfButtons: int
 @export var floorDistance: float
 @export var startingFloor: int
-@export var buttonInstance: PackedScene
+@export var butt: PackedScene
 
 # References
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -23,7 +23,7 @@ func _ready() -> void:
 	floorsNode.top_level = true
 	
 	# Create ground floor (floor 0)
-	var firstButton = buttonInstance.instantiate()
+	var firstButton = butt.instantiate()
 	var firstFloor = Marker3D.new()
 	floorsNode.add_child(firstFloor)
 	firstFloor.global_position = global_position
@@ -39,15 +39,15 @@ func _ready() -> void:
 	
 	# Create additional floors
 	for i in range(numberOfButtons):
-		var floor = Marker3D.new()
-		floorsNode.add_child(floor) 
-		floor.global_position = Vector3(global_position.x, global_position.y + (floorDistance * buttonCount), global_position.z)
-		floors.append(floor)
-		var buttonInstance = buttonInstance.instantiate()
+		var floorHeight = Marker3D.new()
+		floorsNode.add_child(floorHeight) 
+		floorHeight.global_position = Vector3(global_position.x, global_position.y + (floorDistance * buttonCount), global_position.z)
+		floors.append(floorHeight)
+		var buttonInstance = butt.instantiate()
 		buttonInstance.elevator = self
 		buttonInstance.objectName = str(buttonCount) + " Floor"
 		buttonInstance.transform.origin = buttonMarker.position + Vector3(0, -0.15 * buttonCount, 0)
-		buttonInstance.floorMarker = floor
+		buttonInstance.floorMarker = floorHeight
 		add_child(buttonInstance)
 		buttonCount += 1
 	

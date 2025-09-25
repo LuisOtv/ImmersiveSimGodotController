@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bj41y8mgn600q"]
 
-[ext_resource type="Script" uid="uid://btm7nkqxnbga0" path="res://Scripts/Elevator.gd" id="1_1206r"]
+[ext_resource type="Script" uid="uid://cjx23hg5wjm2f" path="res://Scripts/Elevator.gd" id="1_1206r"]
 [ext_resource type="PackedScene" uid="uid://cx6h0t4n7kuo6" path="res://Objects/Map/ElevatorButton.tscn" id="2_1206r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_thsiv"]
@@ -16,7 +16,7 @@ material = SubResource("StandardMaterial3D_1206r")
 
 [node name="Elevator" type="StaticBody3D"]
 script = ExtResource("1_1206r")
-buttonInstance = ExtResource("2_1206r")
+butt = ExtResource("2_1206r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 0.04, 0, 0, 0, 3, 0, -0.02, 0)

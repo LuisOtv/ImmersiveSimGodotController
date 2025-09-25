@@ -8,4 +8,4 @@ var currentState := "Normal"
 
 # Inventory
 var keys: Array[String]
-var items: Array[Dictionary]
+var items: Array

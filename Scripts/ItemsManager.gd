@@ -23,6 +23,8 @@ var heldObject: Node3D
 # Current throw/drop direction
 var throwDirection: Vector3
 
+@onready var Inventory = get_tree().get_first_node_in_group("Inventory")
+
 func _process(_deltaTime: float) -> void:
 	# Calculate direction for throwing/dropping
 	throwDirection = (crosshairNode.global_transform.origin - global_transform.origin).normalized()
@@ -64,7 +66,7 @@ func _pickupGun(weaponSettings):
 
 	# Play pickup sound
 	equipSound.play()
-
+	
 	isHoldingGun = true
 
 # Drop currently held weapon
@@ -94,7 +96,9 @@ func _dropGun():
 	
 	isHoldingGun = false
 	currentGun = null
-	currentSlot.reset()
+	
+	Inventory.dropItem(currentSlot.selectedSpace)
+	Inventory.updateInventory()
 	
 # Hold/carry an object
 func _holdObject(objectToHold):
@@ -108,4 +112,3 @@ func _throwObject():
 	heldObject.linear_velocity = throwDirection
 	heldObject.collisionShape.disabled = false
 	heldObject = null
-	currentSlot.reset()

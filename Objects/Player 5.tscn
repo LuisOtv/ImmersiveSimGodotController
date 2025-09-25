@@ -1034,7 +1034,7 @@ label_settings = SubResource("LabelSettings_qsaej")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Inventory" type="Control" parent="HUD" groups=["Inventory"]]
+[node name="Inventory" type="Control" parent="HUD" groups=["Iventory"]]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
