@@ -7,13 +7,13 @@ extends StaticBody3D
 @export var isTarget := false
 
 # UI reference
-@onready var textBoxUI = get_tree().get_first_node_in_group("TextBox")
+@onready var HUD = get_tree().get_first_node_in_group("HUDManager")
 
 # Handle NPC interaction
 func _interact():
 	# Show dialogue with random speech line
 	if speechLines.size() == 0 : return
 
-	textBoxUI.visible = true
-	textBoxUI.currentText = speechLines.pick_random()
-	textBoxUI.updateText()
+	HUD.textbox.visible = true
+	HUD.textbox.currentText = speechLines.pick_random()
+	HUD.textbox.updateText()

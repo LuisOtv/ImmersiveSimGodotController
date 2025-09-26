@@ -1,32 +1,33 @@
-[gd_scene load_steps=25 format=3 uid="uid://cshvmp6a3xbcu"]
+[gd_scene load_steps=26 format=3 uid="uid://cshvmp6a3xbcu"]
 
 [ext_resource type="PackedScene" uid="uid://cpmokfsmky3pa" path="res://Objects/Player.tscn" id="1_151je"]
 [ext_resource type="PackedScene" uid="uid://xt21uw7ybdsj" path="res://Objects/Map/Box.tscn" id="2_hfbqk"]
-[ext_resource type="Texture2D" uid="uid://d4iqtagmfnhyk" path="res://Textures/Colors/Red.png" id="3_0mp4x"]
+[ext_resource type="Texture2D" uid="uid://17ihcpkkd7y" path="res://Textures/Colors/Red.png" id="3_0mp4x"]
 [ext_resource type="PackedScene" uid="uid://bsc7ltilnibed" path="res://Objects/Guns/M4.tscn" id="4_l2dxr"]
 [ext_resource type="PackedScene" uid="uid://b0uafo3b7p4xc" path="res://Objects/Guns/P250.tscn" id="5_040lc"]
 [ext_resource type="PackedScene" uid="uid://dyxlkyac63exi" path="res://Objects/Guns/M24.tscn" id="6_w8t4k"]
 [ext_resource type="PackedScene" uid="uid://exf3lb8t6d4x" path="res://Objects/Guns/Browning.tscn" id="7_n1xgc"]
-[ext_resource type="Texture2D" uid="uid://cwhtft3weugcx" path="res://Textures/Colors/Green.png" id="8_6gndh"]
+[ext_resource type="Texture2D" uid="uid://i4cc7tgngihe" path="res://Textures/Colors/Green.png" id="8_6gndh"]
 [ext_resource type="PackedScene" uid="uid://tqbxlkgu2ylf" path="res://Objects/Map/Door.tscn" id="9_h5ktn"]
 [ext_resource type="PackedScene" uid="uid://l2s8vjk0akda" path="res://Objects/Map/KeyPad.tscn" id="10_151je"]
 [ext_resource type="PackedScene" uid="uid://dgrimtsurb2vo" path="res://Objects/Items/Key.tscn" id="10_hnl4h"]
-[ext_resource type="Texture2D" uid="uid://di15gonqn8we5" path="res://Textures/Colors/Orange.png" id="11_6l6jm"]
+[ext_resource type="Texture2D" uid="uid://cvnxnuand8bgk" path="res://Textures/Colors/Orange.png" id="11_6l6jm"]
 [ext_resource type="PackedScene" uid="uid://bi4pe0wm4a0rq" path="res://Objects/NPC.tscn" id="12_6eg4l"]
 [ext_resource type="PackedScene" uid="uid://3682hmwkoi58" path="res://Objects/Map/Window.tscn" id="13_vq8a5"]
 [ext_resource type="PackedScene" uid="uid://bj41y8mgn600q" path="res://Objects/Map/Elevator.tscn" id="15_2nd5r"]
 [ext_resource type="PackedScene" uid="uid://f87akad1r57o" path="res://Objects/Map/Ladder.tscn" id="18_0mp4x"]
-[ext_resource type="Texture2D" uid="uid://cs5d0gn7jeayw" path="res://Textures/Colors/Black.png" id="20_l2dxr"]
+[ext_resource type="PackedScene" uid="uid://buoox2up08nj4" path="res://Objects/Items/Note.tscn" id="18_hfbqk"]
+[ext_resource type="Texture2D" uid="uid://bvv4rvebn2pva" path="res://Textures/Colors/Black.png" id="20_l2dxr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7urbq"]
 albedo_color = Color(0.285257, 0.377184, 0.408288, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5ricj"]
 material = SubResource("StandardMaterial3D_7urbq")
-size = Vector2(50, 50)
+size = Vector2(30, 30)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y2uhi"]
-size = Vector3(50, 1, 50)
+size = Vector3(30, 1, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vts2g"]
 albedo_texture = ExtResource("3_0mp4x")
@@ -43,10 +44,6 @@ uv1_triplanar = true
 
 [node name="TestMap" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="Floor" type="StaticBody3D" parent="."]
 collision_layer = 3
 
@@ -58,13 +55,8 @@ mesh = SubResource("PlaneMesh_5ricj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_y2uhi")
 
-[node name="Player" parent="." instance=ExtResource("1_151je")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-collision_layer = 1
-collision_mask = 1
-
 [node name="Guns" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1, 0, -10.9)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Guns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
@@ -90,7 +82,7 @@ extraAmmo = 20
 transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, -0.90275, -0.251112, 0)
 
 [node name="Door" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1000001, 0, -10.9)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
@@ -98,29 +90,41 @@ size = Vector3(6, 1, 6)
 material = SubResource("StandardMaterial3D_u8elp")
 
 [node name="Key" parent="Door" instance=ExtResource("10_hnl4h")]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -0.82223463, 0.601985, 0)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -0.12223482, 0.601985, -1.6999998)
 collision_layer = 5
 collision_mask = 1
 objectName = "Door Key"
 keyName = "Wood Door"
 
 [node name="Door" parent="Door" instance=ExtResource("9_h5ktn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, -0.5, -2.1000004)
 
 [node name="LockedDoor" parent="Door" instance=ExtResource("9_h5ktn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5999999, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6999998, -0.5, -2.1000004)
 
 [node name="StaticBody3D" parent="Door/LockedDoor" index="0"]
 isLocked = true
 requiredKey = "Wood Door"
 
+[node name="KeypadDoor" parent="Door" instance=ExtResource("9_h5ktn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7000003, -0.5, -2.1000004)
+
+[node name="StaticBody3D" parent="Door/KeypadDoor" index="0"]
+isLocked = true
+
 [node name="KeyPad" parent="Door" node_paths=PackedStringArray("door") instance=ExtResource("10_151je")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.7, -2.1000004)
 password = "1234"
-door = NodePath("../LockedDoor/StaticBody3D")
+door = NodePath("../KeypadDoor/StaticBody3D")
+
+[node name="Note" parent="Door" instance=ExtResource("18_hfbqk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0.66121817, -2.1000004)
+objectName = "Keypad Password"
+title = "*NEW PASSWORD*"
+text = "Hi Andrew, someone leaked our last keypad password, so Ive changed it, this is the new one: 1234"
 
 [node name="NPCs" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1000001, 0, -0.9000001)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NPCs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99, 0)
@@ -144,7 +148,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05218, 0.5, -2.79882)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94782, 0.5, -2.79882)
 
 [node name="Movement" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8999996, 0, -10.9)
 
 [node name="Elevator" parent="Movement" instance=ExtResource("15_2nd5r")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.00416, -0.5, -0.98045)
@@ -178,4 +182,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.0134
 [node name="Box4" parent="Movement" instance=ExtResource("2_hfbqk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.01348, 0.131948, 3.16571)
 
+[node name="Player" parent="." instance=ExtResource("1_151je")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1000004, 0.5, -4.9)
+collision_layer = 1
+collision_mask = 1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.86602354, -0.43301603, 0.25000072, 0, 0.49999818, 0.86602646, -0.5000033, 0.7499993, -0.4330102, 7.1000004, 0, -4.9)
+shadow_enabled = true
+
 [editable path="Door/LockedDoor"]
+[editable path="Door/KeypadDoor"]

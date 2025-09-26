@@ -43,6 +43,9 @@ var cameraMinAngle = -80.0 * PI / 180.0
 var cameraMaxAngle = 80.0 * PI / 180.0
 var cameraRotation = Vector3.ZERO
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 # Handle mouse look and escape menu
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse look when captured
@@ -54,13 +57,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		cameraRotation.x -= event.relative.y * mouseSensitivity
 		cameraRotation.x = clamp(cameraRotation.x, cameraMinAngle, cameraMaxAngle)
 		neckNode.rotation = cameraRotation
-
-	# Toggle mouse capture with escape
-	if event.is_action_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 # Handle stance changes and leaning
 func _process(_deltaTime: float) -> void:

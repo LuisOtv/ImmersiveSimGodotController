@@ -23,7 +23,7 @@ var heldObject: Node3D
 # Current throw/drop direction
 var throwDirection: Vector3
 
-@onready var Inventory = get_tree().get_first_node_in_group("Inventory")
+@onready var HUDManager = get_tree().get_first_node_in_group("HUDManager")
 
 func _process(_deltaTime: float) -> void:
 	# Calculate direction for throwing/dropping
@@ -97,8 +97,8 @@ func _dropGun():
 	isHoldingGun = false
 	currentGun = null
 	
-	Inventory.dropItem(currentSlot.selectedSpace)
-	Inventory.updateInventory()
+	HUDManager.inventory.dropItem(currentSlot.selectedSpace)
+	HUDManager.inventory.updateInventory()
 	
 # Hold/carry an object
 func _holdObject(objectToHold):
