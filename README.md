@@ -19,6 +19,7 @@ intense combat or careful stealth.
 ### 🏗️ World Interaction
 
 -   **Animated Doors** → smooth open/close interaction.
+-   **Keypad** → use keypads to unlock doors
 -   **Interactive Elevator** → functional buttons and realistic
     movement.
 -   **Collectibles** → keys, pickups, and other interactive items.
@@ -33,6 +34,7 @@ intense combat or careful stealth.
 -   **Drop Mechanic** → G to drop held items or weapons.
 -   **Dynamic HUD** → includes crosshair, ammo counter, and interaction
     prompts.
+-   **Inventory System** → Hotbar and Backpack
 
 ### ⚡ Miscellaneous
 
