@@ -99,10 +99,14 @@ keyName = "Wood Door"
 [node name="Door" parent="Door" instance=ExtResource("9_h5ktn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, -0.5, -2.1000004)
 
+[node name="StaticBody3D" parent="Door/Door" index="0"]
+objectName = "Door"
+
 [node name="LockedDoor" parent="Door" instance=ExtResource("9_h5ktn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6999998, -0.5, -2.1000004)
 
 [node name="StaticBody3D" parent="Door/LockedDoor" index="0"]
+objectName = "Key Door"
 isLocked = true
 requiredKey = "Wood Door"
 
@@ -110,6 +114,7 @@ requiredKey = "Wood Door"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7000003, -0.5, -2.1000004)
 
 [node name="StaticBody3D" parent="Door/KeypadDoor" index="0"]
+objectName = "KeyPad Door"
 isLocked = true
 
 [node name="KeyPad" parent="Door" node_paths=PackedStringArray("door") instance=ExtResource("10_151je")]
@@ -183,7 +188,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.0134
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.01348, 0.131948, 3.16571)
 
 [node name="Player" parent="." instance=ExtResource("1_151je")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1000004, 0.5, -4.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, 0.5, -4.9)
 collision_layer = 1
 collision_mask = 1
 
@@ -191,5 +196,6 @@ collision_mask = 1
 transform = Transform3D(-0.86602354, -0.43301603, 0.25000072, 0, 0.49999818, 0.86602646, -0.5000033, 0.7499993, -0.4330102, 7.1000004, 0, -4.9)
 shadow_enabled = true
 
+[editable path="Door/Door"]
 [editable path="Door/LockedDoor"]
 [editable path="Door/KeypadDoor"]
