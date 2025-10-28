@@ -59,16 +59,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		neckNode.rotation = cameraRotation
 
 # Handle stance changes and leaning
-func _process(_deltaTime: float) -> void:
+func _process(deltaTime: float) -> void:
 	# Normal movement state
 	if PlayerStats.currentState == 'Normal':
 		# Crouching logic
 		if Input.is_action_pressed("ui_control") or topDetection.is_colliding() == true:
-			neckNode.global_position = lerp(neckNode.global_position, crouchPosition.global_position, 0.1)
+			neckNode.global_position = lerp(neckNode.global_position, crouchPosition.global_position, 8  * deltaTime)
 			standingCollision.disabled = true
 			currentSpeed = crouchingSpeed
 		else:
-			neckNode.global_position = lerp(neckNode.global_position, standingPosition.global_position, 0.1)
+			neckNode.global_position = lerp(neckNode.global_position, standingPosition.global_position, 8  * deltaTime)
 			standingCollision.disabled = false
 			currentSpeed = walkingSpeed
 	
@@ -80,17 +80,17 @@ func _process(_deltaTime: float) -> void:
 		
 		# Leaning logic
 		if Input.is_action_pressed("ui_q") and !leftDetection.is_colliding():
-			cameraNode.transform = lerp(cameraNode.transform, leanLeftPosition.transform, 0.1)
+			cameraNode.transform = lerp(cameraNode.transform, leanLeftPosition.transform, 8  * deltaTime)
 		elif Input.is_action_pressed("ui_e") and !rightDetection.is_colliding():
-			cameraNode.transform = lerp(cameraNode.transform, leanRightPosition.transform, 0.1)
+			cameraNode.transform = lerp(cameraNode.transform, leanRightPosition.transform, 8  * deltaTime)
 		else:
 			cameraNode.fov = 75
-			cameraNode.transform = lerp(cameraNode.transform, centerPosition.transform, 0.1)
+			cameraNode.transform = lerp(cameraNode.transform, centerPosition.transform, 8 * deltaTime)
 	
 	# Ladder climbing state
 	elif PlayerStats.currentState == 'Ladder':
 		standingCollision.disabled = true
-		neckNode.global_position = lerp(neckNode.global_position, crouchPosition.global_position, 0.1)
+		neckNode.global_position = lerp(neckNode.global_position, crouchPosition.global_position, 8 * deltaTime)
 		cameraNode.fov = 75
 
 # Handle movement physics
@@ -113,15 +113,15 @@ func _physics_process(deltaTime: float) -> void:
 			velocity.x = movementDirection.x * currentSpeed
 			velocity.z = movementDirection.z * currentSpeed
 		else:
-			velocity.x = move_toward(velocity.x, 0, currentSpeed)
-			velocity.z = move_toward(velocity.z, 0, currentSpeed)
+			velocity.x = 0
+			velocity.z = 0
 
 	# Ladder climbing movement
 	elif PlayerStats.currentState == 'Ladder':
 		if Input.is_action_pressed("ui_up"):
 			velocity.y = ladderSpeed
 		elif Input.is_action_pressed("ui_down"):
-			velocity.y = -ladderSpeed
+			velocity.y = - ladderSpeed
 		else:
 			velocity.y = move_toward(velocity.y, 0, currentSpeed) 
 

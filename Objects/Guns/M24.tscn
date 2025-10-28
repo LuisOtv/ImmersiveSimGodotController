@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://dyxlkyac63exi"]
 
-[ext_resource type="Script" uid="uid://ca6806unwpdyd" path="res://Scripts/GunObject.gd" id="1_4fn4r"]
+[ext_resource type="Script" uid="uid://bwbfpt8gtbdsc" path="res://Scripts/GunObject.gd" id="1_4fn4r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fn4r"]
 albedo_color = Color(0.956863, 0.0745098, 0.462745, 1)
@@ -193,7 +193,7 @@ currentAmmo = 3
 magazineSize = 3
 extraAmmo = 12
 gunRecoilAmount = 5.0
-reloadTime = 120.0
+reloadTime = 5.0
 scopeFieldOfView = 20.0
 
 [node name="Body" type="MeshInstance3D" parent="."]

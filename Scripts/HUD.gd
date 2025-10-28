@@ -13,13 +13,15 @@ extends Control
 @onready var inventory: Control = $Inventory
 @onready var notes: Control = $Notes
 
-func _process(_deltaTime: float) -> void:
+@export var crosshairFollow := 3
+
+func _process(deltaTime: float) -> void:
 	# Update distance display
 	distanceLabel.text = str(int(springArmNode.get_hit_length()))
 	
 	# Update crosshair position on screen
 	var crosshairScreenPosition = cameraNode.unproject_position(crosshairNode.position)
-	crosshairNode.global_position = lerp(crosshairNode.global_position, gunTargetMarker.global_position, 0.3)
+	crosshairNode.global_position = lerp(crosshairNode.global_position, gunTargetMarker.global_position, crosshairFollow * deltaTime)
 	crosshairTextContainer.position = crosshairScreenPosition
 
 func _unhandled_key_input(_event: InputEvent) -> void:

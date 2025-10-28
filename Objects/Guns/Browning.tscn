@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://exf3lb8t6d4x"]
 
-[ext_resource type="Script" uid="uid://ca6806unwpdyd" path="res://Scripts/GunObject.gd" id="1_r6k78"]
+[ext_resource type="Script" uid="uid://bwbfpt8gtbdsc" path="res://Scripts/GunObject.gd" id="1_r6k78"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cj06k"]
 size = Vector3(0.0683594, 0.122223, 1.05977)
@@ -128,7 +128,7 @@ pelletCount = 6
 isShotgun = true
 gunRecoilAmount = 3.0
 cameraRecoilAmount = 5.0
-reloadTime = 90.0
+reloadTime = 1.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000373498, 0.0398258, -0.440641)

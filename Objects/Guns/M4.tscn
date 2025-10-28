@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://bsc7ltilnibed"]
 
-[ext_resource type="Script" uid="uid://csxjg1564w144" path="res://Scripts/GunObject.gd" id="1_qsad0"]
+[ext_resource type="Script" uid="uid://bwbfpt8gtbdsc" path="res://Scripts/GunObject.gd" id="1_qsad0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cj06k"]
 size = Vector3(0.0683594, 0.148742, 1.64786)
@@ -90,10 +90,10 @@ currentAmmo = 24
 magazineSize = 24
 extraAmmo = 48
 isAutomatic = true
-timeBetweenShots = 5.0
+timeBetweenShots = 0.2
 gunRecoilAmount = 2.0
 cameraRecoilAmount = 2.0
-reloadTime = 60.0
+reloadTime = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000373498, 0.0530855, -0.146596)

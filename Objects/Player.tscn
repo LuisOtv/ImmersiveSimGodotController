@@ -1,29 +1,29 @@
-[gd_scene load_steps=77 format=4 uid="uid://cpmokfsmky3pa"]
+[gd_scene load_steps=78 format=4 uid="uid://cpmokfsmky3pa"]
 
-[ext_resource type="Script" uid="uid://dl153nf43v0bq" path="res://Scripts/Player.gd" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://bxbhrmvxjl81e" path="res://Scripts/Player.gd" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://mh486nesy18d" path="res://Scripts/RayCast.gd" id="2_kpjcp"]
-[ext_resource type="Script" uid="uid://o3hhj2vww1hl" path="res://Scripts/ItemsManager.gd" id="3_utwlt"]
-[ext_resource type="Texture2D" uid="uid://dlbpxi3ebp1m4" path="res://Textures/OuterCrossHair.png" id="4_m0x7a"]
+[ext_resource type="Script" uid="uid://dxr6wrqs0w3nv" path="res://Scripts/ItemsManager.gd" id="3_utwlt"]
+[ext_resource type="Texture2D" uid="uid://dtrfpday11vw5" path="res://Textures/OuterCrossHair.png" id="4_m0x7a"]
 [ext_resource type="PackedScene" uid="uid://b0uafo3b7p4xc" path="res://Objects/Guns/P250.tscn" id="5_g1u4f"]
 [ext_resource type="Script" uid="uid://cg4gc2m8heyom" path="res://Scripts/Gun.gd" id="5_tdg3f"]
-[ext_resource type="AudioStream" uid="uid://b22c6qdq1bqhm" path="res://Sounds/Fire.mp3" id="7_dtqjt"]
+[ext_resource type="AudioStream" uid="uid://brrydyrvibud3" path="res://Sounds/Fire.mp3" id="7_dtqjt"]
 [ext_resource type="PackedScene" uid="uid://dyxlkyac63exi" path="res://Objects/Guns/M24.tscn" id="7_kwjl5"]
-[ext_resource type="AudioStream" uid="uid://cm76tcsc65aib" path="res://Sounds/Equip.mp3" id="8_bhhdu"]
+[ext_resource type="AudioStream" uid="uid://po32uy3rt2r5" path="res://Sounds/Equip.mp3" id="8_bhhdu"]
 [ext_resource type="PackedScene" uid="uid://c2vpyaxqwf0sx" path="res://Objects/Guns/Bullet.tscn" id="8_g1u4f"]
-[ext_resource type="Texture2D" uid="uid://dvhlxdk5y75cw" path="res://Textures/MuzzleFlashFace.png" id="8_miouo"]
-[ext_resource type="Texture2D" uid="uid://dpc4624uu1ql3" path="res://Textures/MuzzleFlash.png" id="8_o3h8g"]
+[ext_resource type="Texture2D" uid="uid://d0082sucg3chy" path="res://Textures/MuzzleFlashFace.png" id="8_miouo"]
+[ext_resource type="Texture2D" uid="uid://4ihlijtqikys" path="res://Textures/MuzzleFlash.png" id="8_o3h8g"]
 [ext_resource type="PackedScene" uid="uid://bsc7ltilnibed" path="res://Objects/Guns/M4.tscn" id="9_vy1ne"]
-[ext_resource type="AudioStream" uid="uid://d2cjms015v5gv" path="res://Sounds/Empty.mp3" id="11_glx4g"]
+[ext_resource type="AudioStream" uid="uid://gfii73pyv3an" path="res://Sounds/Empty.mp3" id="11_glx4g"]
 [ext_resource type="PackedScene" uid="uid://exf3lb8t6d4x" path="res://Objects/Guns/Browning.tscn" id="11_qsaej"]
-[ext_resource type="FontFile" uid="uid://c86r3uua3an8r" path="res://Fonts/IBMPlexMono-Medium.ttf" id="16_m0x7a"]
+[ext_resource type="FontFile" uid="uid://cskaj0ktvkviu" path="res://Fonts/IBMPlexMono-Medium.ttf" id="16_m0x7a"]
 [ext_resource type="Script" uid="uid://c188jt8vaaemo" path="res://Scripts/CrossHair.gd" id="17_8flut"]
 [ext_resource type="Script" uid="uid://tdxijgjnon7t" path="res://Scripts/Inventory.gd" id="18_xw48w"]
-[ext_resource type="Script" uid="uid://dk7w3x17nodpb" path="res://Scripts/Notes.gd" id="19_5v5v8"]
-[ext_resource type="AudioStream" uid="uid://cel1uroqf5tyv" path="res://Sounds/Reloading.mp3" id="19_m0x7a"]
-[ext_resource type="Script" uid="uid://wwrgef5xe76t" path="res://Scripts/HUD.gd" id="19_qidb7"]
+[ext_resource type="Script" uid="uid://cfxjeam8c3k6p" path="res://Scripts/Notes.gd" id="19_5v5v8"]
+[ext_resource type="AudioStream" uid="uid://cjrmq2nfrx8m1" path="res://Sounds/Reloading.mp3" id="19_m0x7a"]
+[ext_resource type="Script" uid="uid://b8hxuf1ubghay" path="res://Scripts/HUD.gd" id="19_qidb7"]
 [ext_resource type="Script" uid="uid://depaqi6jc3fbs" path="res://Scripts/TextBox.gd" id="21_u7x0b"]
-[ext_resource type="Texture2D" uid="uid://daovtuaxlk1eo" path="res://Textures/CrossHair.png" id="22_avx33"]
-[ext_resource type="AudioStream" uid="uid://cdmms7bka7kpy" path="res://Sounds/ShotgunReload.mp3" id="24_70hv0"]
+[ext_resource type="Texture2D" uid="uid://dhfc7vs7g6r4m" path="res://Textures/CrossHair.png" id="22_avx33"]
+[ext_resource type="AudioStream" uid="uid://b1w8w8vb1by54" path="res://Sounds/ShotgunReload.mp3" id="24_70hv0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
 radius = 0.4
@@ -583,6 +583,8 @@ shadow_mesh = SubResource("ArrayMesh_dsxsg")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_70hv0"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_5v5v8"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_e80uo"]
 font = ExtResource("16_m0x7a")
 outline_size = 3
@@ -617,7 +619,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 shape = SubResource("CapsuleShape3D_utwlt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CapsuleMesh_ig7tw")
 
 [node name="Crouch" type="Marker3D" parent="."]
@@ -875,6 +876,9 @@ no_depth_test = true
 fixed_size = true
 texture = SubResource("CompressedTexture2D_70hv0")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Neck/CrossHair"]
+mesh = SubResource("BoxMesh_5v5v8")
+
 [node name="CenterPosition" type="Marker3D" parent="Neck"]
 visible = false
 
@@ -902,6 +906,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("19_qidb7")
+crosshairFollow = 15
 
 [node name="CrosshairText" type="Control" parent="HUD"]
 layout_mode = 1
@@ -1068,17 +1073,12 @@ script = ExtResource("19_5v5v8")
 
 [node name="TextureRect" type="TextureRect" parent="HUD/Notes"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -180.0
-offset_right = 180.0
-offset_bottom = 180.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch_mode = 3
 
 [node name="Panel" type="Panel" parent="HUD/Notes"]
 layout_mode = 1

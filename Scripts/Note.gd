@@ -5,11 +5,11 @@ extends StaticBody3D
 
 @export var title := "Holder"
 @export var text := "Holder"
-@export var image : ImageTexture
+@export var texture : Texture2D
 
 @onready var HUDManager = get_tree().get_first_node_in_group("HUDManager")
 
 # Handle key pickup
 func _interact():
 	# Add key to player inventory
-	HUDManager.notes.openNote(image,title,text)
+	HUDManager.notes.openNote(texture,title,text)

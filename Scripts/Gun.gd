@@ -7,17 +7,16 @@ extends Node3D
 @export var fireSoundPlayer: AudioStreamPlayer3D
 @export var reloadSoundPlayer: AudioStreamPlayer3D
 @export var emptySoundPlayer: AudioStreamPlayer3D
-
 # --- Weapon State Variables ---
-var flashTimer: int
+var flashTimer: float
 var isActive: bool
 var currentBurstPerMinute: float
 # --- Ammo System ---
 var currentAmmo: int
 var magazineSize: int
 var extraAmmo: int
-var currentReloadTime: int
-var reloadTime: int
+var currentReloadTime: float
+var reloadTime: float
 var pelletCount: int
 
 # --- Weapon Configuration ---
@@ -27,7 +26,7 @@ var timeBetweenShots: float
 var gunRecoilAmount: float
 var cameraRecoilAmount: float
 var scopeFieldOfView: float
-var timeOut: int
+var timeOut: float
 
 # --- Shooting Direction ---
 var shootDirection: Vector3
@@ -45,10 +44,10 @@ var shootDirection: Vector3
 @onready var shoulderPosition: Marker3D = $"../../ShoulderPos"
 
 # --- Main Process Loop ---
-func _process(_deltaTime: float) -> void:
+func _process(deltaTime: float) -> void:
 	# Calculate shooting direction
 	shootDirection = (crosshairNode.global_transform.origin - global_transform.origin).normalized()
-	_updateMuzzleFlash()
+	_updateMuzzleFlash(deltaTime)
 
 	# Hide weapon if not active
 	if not isActive:
@@ -59,25 +58,25 @@ func _process(_deltaTime: float) -> void:
 
 	# Handle reload animation
 	if currentReloadTime >= 0:
-		weaponsContainer.global_transform.origin = lerp(weaponsContainer.global_transform.origin, lowerPosition.global_transform.origin, 0.1)
-		currentReloadTime -= 1
+		weaponsContainer.global_transform.origin = lerp(weaponsContainer.global_transform.origin, lowerPosition.global_transform.origin, 6 * deltaTime)
+		currentReloadTime -= deltaTime
 	# Handle object holding (lower weapon)
 	elif weaponsContainer.isHoldingObject:
-		weaponsContainer.global_transform.origin = lerp(weaponsContainer.global_transform.origin, lowerPosition.global_transform.origin, 0.1)
+		weaponsContainer.global_transform.origin = lerp(weaponsContainer.global_transform.origin, lowerPosition.global_transform.origin, 6 * deltaTime)
 		return
 	# Normal weapon handling
 	else:
-		weaponsContainer.global_transform.origin = lerp(weaponsContainer.global_transform.origin, shoulderPosition.global_transform.origin, 0.2)
+		weaponsContainer.global_transform.origin = lerp(weaponsContainer.global_transform.origin, shoulderPosition.global_transform.origin, 6 * deltaTime)
 		_updateUI()
-		_handleShooting()
+		_handleShooting(deltaTime)
 		_handleReload()
 		_handleScoping()
 
 # --- Visual Effects ---
-func _updateMuzzleFlash() -> void:
+func _updateMuzzleFlash(deltaTime: float) -> void:
 	if flashTimer > 0:
 		muzzleFlash.visible = true
-		flashTimer -= 1
+		flashTimer -= deltaTime
 	else:
 		muzzleFlash.visible = false
 
@@ -97,7 +96,7 @@ func _handleScoping():
 		cameraNode.fov = 75
 
 # Handle weapon shooting based on weapon type
-func _handleShooting() -> void:
+func _handleShooting(deltaTime: float) -> void:
 
 	if isAutomatic:
 		# Automatic: continuous fire with rate limiting
@@ -105,7 +104,7 @@ func _handleShooting() -> void:
 			if currentBurstPerMinute <= 0:
 				_shoot()
 			else:
-				currentBurstPerMinute -= 1
+				currentBurstPerMinute -= deltaTime
 		else:
 			currentBurstPerMinute = 0
 	else:
@@ -131,7 +130,7 @@ func _shoot() -> void:
 		# Consume ammo
 		currentAmmo -= 1
 		currentBurstPerMinute = timeBetweenShots
-		flashTimer = 1
+		flashTimer = 0.1
 
 		# Create bullets based on weapon type
 		if isShotgun:
