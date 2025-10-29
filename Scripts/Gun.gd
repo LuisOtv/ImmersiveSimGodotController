@@ -7,28 +7,13 @@ extends Node3D
 @export var fireSoundPlayer: AudioStreamPlayer3D
 @export var reloadSoundPlayer: AudioStreamPlayer3D
 @export var emptySoundPlayer: AudioStreamPlayer3D
+
 # --- Weapon State Variables ---
 var flashTimer: float
 var isActive: bool
 var currentBurstPerMinute: float
-# --- Ammo System ---
-var currentAmmo: int
-var magazineSize: int
-var extraAmmo: int
 var currentReloadTime: float
-var reloadTime: float
-var pelletCount: int
-
-# --- Weapon Configuration ---
-var isAutomatic: bool
-var isShotgun: bool
-var timeBetweenShots: float
-var gunRecoilAmount: float
-var cameraRecoilAmount: float
-var scopeFieldOfView: float
 var timeOut: float
-
-# --- Shooting Direction ---
 var shootDirection: Vector3
 
 # --- Node References ---
@@ -42,6 +27,13 @@ var shootDirection: Vector3
 @onready var weaponsContainer: Node3D = $".."
 @onready var lowerPosition: Marker3D = $"../../../LowerPos"
 @onready var shoulderPosition: Marker3D = $"../../ShoulderPos"
+
+@onready var weaponsManager = get_tree().get_first_node_in_group("ItemsManager")
+@onready var HUDManager = get_tree().get_first_node_in_group("HUDManager")
+
+# --- Helper para pegar o item atual ---
+func _getWeaponItem():
+	return HUDManager.inventory.bag.get_child(weaponsManager.bagSpace).item
 
 # --- Main Process Loop ---
 func _process(deltaTime: float) -> void:
@@ -82,23 +74,26 @@ func _updateMuzzleFlash(deltaTime: float) -> void:
 
 # --- User Interface ---
 func _updateUI() -> void:
-	ammoLabel.text = str(currentAmmo)
-	extraAmmoLabel.text = str(extraAmmo)
+	var weaponItem = _getWeaponItem()
+	ammoLabel.text = str(weaponItem.CurAmmo)
+	extraAmmoLabel.text = str(weaponItem.ExtraAmmo)
 
 # --- Input Handlers ---
 
 # Handle weapon scoping
 func _handleScoping():
-	if Input.is_action_pressed('ui_mouse_2') and scopeFieldOfView > 0:
-		cameraNode.fov = scopeFieldOfView
+	var weaponItem = _getWeaponItem()
+	if Input.is_action_pressed('ui_mouse_2') and weaponItem.ScopeFov > 0:
+		cameraNode.fov = weaponItem.ScopeFov
 		crosshairNode._showScope()
 	else:
 		cameraNode.fov = 75
 
 # Handle weapon shooting based on weapon type
 func _handleShooting(deltaTime: float) -> void:
-
-	if isAutomatic:
+	var weaponItem = _getWeaponItem()
+	
+	if weaponItem.Auto:
 		# Automatic: continuous fire with rate limiting
 		if Input.is_action_pressed("ui_mouse_1"):
 			if currentBurstPerMinute <= 0:
@@ -114,28 +109,32 @@ func _handleShooting(deltaTime: float) -> void:
 
 # Handle weapon reloading
 func _handleReload() -> void:
-	if Input.is_action_just_pressed("ui_r") and extraAmmo > 0 and currentAmmo < magazineSize:
-		var neededAmmo = magazineSize - currentAmmo
-		var ammoToReload = min(neededAmmo, extraAmmo)
+	var weaponItem = _getWeaponItem()
+	
+	if Input.is_action_just_pressed("ui_r") and weaponItem.ExtraAmmo > 0 and weaponItem.CurAmmo < weaponItem.MagSize:
+		var neededAmmo = weaponItem.MagSize - weaponItem.CurAmmo
+		var ammoToReload = min(neededAmmo, weaponItem.ExtraAmmo)
 
-		currentAmmo += ammoToReload
-		extraAmmo -= ammoToReload
+		weaponItem.CurAmmo += ammoToReload
+		weaponItem.ExtraAmmo -= ammoToReload
+		
 		reloadSoundPlayer.play()
-
-		currentReloadTime = reloadTime
+		currentReloadTime = weaponItem.ReloadTime
 
 # --- Shooting Logic ---
 func _shoot() -> void:
-	if currentAmmo > 0 and timeOut >= 0:
+	var weaponItem = _getWeaponItem()
+	
+	if weaponItem.CurAmmo > 0 and timeOut >= 0:
 		# Consume ammo
-		currentAmmo -= 1
-		currentBurstPerMinute = timeBetweenShots
+		weaponItem.CurAmmo -= 1
+		currentBurstPerMinute = weaponItem.BPM
 		flashTimer = 0.1
 
 		# Create bullets based on weapon type
-		if isShotgun:
+		if weaponItem.Shotgun:
 			# Shotgun: multiple pellets with spread
-			for i in range(pelletCount):
+			for i in range(weaponItem.Pellets):
 				var spread = Vector3(
 					randf_range(-0.05, 0.05),
 					randf_range(-0.05, 0.05),
@@ -148,16 +147,16 @@ func _shoot() -> void:
 
 		# Apply crosshair spread for visual feedback
 		crosshairNode.global_transform.origin += Vector3(
-			randf_range((springArmNode.get_hit_length() / gunRecoilAmount) * -1, (springArmNode.get_hit_length() / gunRecoilAmount)),
-			randf_range(0, (springArmNode.get_hit_length() / gunRecoilAmount)),0
+			randf_range((springArmNode.get_hit_length() / weaponItem.GunRecoil) * -1, (springArmNode.get_hit_length() / weaponItem.GunRecoil)),
+			randf_range(0, (springArmNode.get_hit_length() / weaponItem.GunRecoil)), 0
 		)
 
 		# Apply weapon recoil
-		weaponsContainer.translate(Vector3(0, 0, 0.01 * gunRecoilAmount))
+		weaponsContainer.translate(Vector3(0, 0, 0.01 * weaponItem.GunRecoil))
 		fireSoundPlayer.play()
 
 		# Apply camera recoil
-		cameraNode.rotate_x(0.01 * cameraRecoilAmount)
+		cameraNode.rotate_x(0.01 * weaponItem.CamRecoil)
 	else:
 		# No ammo - play empty sound
 		emptySoundPlayer.play()
@@ -171,27 +170,23 @@ func _createBullet(direction: Vector3) -> void:
 
 # --- Weapon Reset ---
 func _reset():
-		isActive = false
-		isAutomatic = false
-		extraAmmo = 0
-		timeBetweenShots = 0
-		currentAmmo = 0
-		magazineSize = 0
-		ammoLabel.text = ""
-		extraAmmoLabel.text = ""
+	isActive = false
+	ammoLabel.text = ""
+	extraAmmoLabel.text = ""
 
 func get_dic():
-	return{
+	var weaponItem = _getWeaponItem()
+	return {
 		"Gun": objectName,
-		"CurAmmo" : currentAmmo,
-		"MagSize" : magazineSize,
-		"ExtraAmmo" : extraAmmo,
-		"Auto" : isAutomatic,
-		"BPM" : timeBetweenShots,
-		"GunRecoil" : gunRecoilAmount,
-		"CamRecoil" : cameraRecoilAmount,
-		"ReloadTime" : reloadTime,
-		"Shotgun" : isShotgun,
-		"Pellets" : pelletCount,
-		"ScopeFov" : scopeFieldOfView,
+		"CurAmmo": weaponItem.CurAmmo,
+		"MagSize": weaponItem.MagSize,
+		"ExtraAmmo": weaponItem.ExtraAmmo,
+		"Auto": weaponItem.Auto,
+		"BPM": weaponItem.BPM,
+		"GunRecoil": weaponItem.GunRecoil,
+		"CamRecoil": weaponItem.CamRecoil,
+		"ReloadTime": weaponItem.ReloadTime,
+		"Shotgun": weaponItem.Shotgun,
+		"Pellets": weaponItem.Pellets,
+		"ScopeFov": weaponItem.ScopeFov,
 	}

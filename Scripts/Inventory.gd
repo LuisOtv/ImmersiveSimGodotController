@@ -60,4 +60,3 @@ func updateInventory() -> void:
 	# Debug
 	for i in range(PlayerStats.items.size()):
 		print(i, " -> ", PlayerStats.items[i])
-		

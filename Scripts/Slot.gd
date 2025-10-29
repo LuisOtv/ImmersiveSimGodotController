@@ -9,6 +9,7 @@ var space : int
 
 # Reference to weapons manager
 @onready var weaponsManager = get_tree().get_first_node_in_group("ItemsManager")
+@onready var HUDManager = get_tree().get_first_node_in_group("HUDManager")
 
 func _unhandled_key_input(_event: InputEvent) -> void:
 		if !item.is_empty():
@@ -17,7 +18,7 @@ func _unhandled_key_input(_event: InputEvent) -> void:
 				if weaponsManager.currentGun != null:
 					weaponsManager.currentGun._reset()
 
-				weaponsManager._pickupGun(PlayerStats.items[selectedSpace])
+				weaponsManager._pickupGun(PlayerStats.items[selectedSpace], selectedSpace)
 
 func check():
 	if !item.is_empty():
@@ -27,3 +28,4 @@ func check():
 
 func clear():
 	item = {}
+	selectedSpace = -1
